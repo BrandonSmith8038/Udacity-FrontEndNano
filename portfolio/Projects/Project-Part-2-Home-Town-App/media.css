@@ -1,0 +1,53 @@
+.content {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+}
+
+.hero, .top-news, .scores, .weather, .recent-news {
+  order: 10;
+}
+
+@media screen and (max-width: 549px) {
+  h1.header__title {
+    font-size: 2em;
+	}
+}
+
+@media screen and (min-width: 550px) {
+  .hero {
+    order: 0;
+    width: 60%;
+  }
+  .weather {
+    order: 1;
+    width: 40%;
+  }
+}
+@media screen and (min-width: 900px) {
+	.hero,
+	.top-news {
+		width: 50%;
+	}
+	.hero {
+		order: -1;
+	}
+	.top-news {
+		order: 0;
+	}
+	.scores {
+		order: 1;
+		width: 60%;
+	}
+	.weather {
+		order: 2;
+		width: 40%;
+	}
+
+}
+@media screen and (min-width: 1200px) {
+	.content {
+		width: 1200px;
+		margin: auto;
+	}
+}
