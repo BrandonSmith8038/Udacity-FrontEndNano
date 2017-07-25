@@ -1,3 +1,70 @@
-h1 {
-	color: pink;
+/** {
+	outline: 2px solid red;
 }
+*/
+.logo {
+	margin-top: 15px;
+}
+
+.header {
+	border-bottom: 3px solid #90060c;
+	font-family: 'Share Tech', sans-serif;
+	margin-bottom: 20px;
+	padding: 10px 20px 20px 20px;
+}
+
+.name h1 {
+	font-size: 50px;
+	text-transform: uppercase;
+}
+
+.featured-work-heading h2 {
+	color: #BDBDBD;
+	font-size: 34px;
+}
+
+.featured-border {
+	border: 0;
+	box-shadow: 0 10px 10px -10px #8c8b8b inset;
+	height: 10px;
+	margin-top: 5px;
+	width: 50%;
+}
+
+.main-image {
+	max-width: 100%;
+}
+
+.main-pic {
+	max-height: 400px;
+	overflow: hidden;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.work-title h4 {
+	font-family: 'Share Tech', sans-serif;
+	font-size: 35px;
+	text-transform: uppercase;
+}
+
+.work-image {
+	height: 300px;
+	overflow: hidden;
+	width: 300px;
+}
+
+.work-link a {
+	color: #90060c;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 14px;
+	font-weight: 200;
+	text-decoration: none;
+	transition: 0.7s;
+}
+
+.work-link a:hover {
+	color: black;
+
+}
+

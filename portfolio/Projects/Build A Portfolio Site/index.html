@@ -5,55 +5,78 @@
 	<meta description="Porfolio Site For Front End Nano Degree Program">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,">
 	<title>Build A Portfolio Site</title>
-	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Share+Tech" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:200" rel="stylesheet">
 </head>
 	<body>
-		<div class="container name-log">
+		<div class="container header">
 			<div class="row">
-				<div class="col-md-4 logo">Logo</div>
-				<div class="col-md-8">
+				<div class="col-md-4 logo">
+					<img src="svg/logo.svg" alt="Company Logo">
+				</div>
+				<div class="col-md-8 text-right">
 					<div class="name">
 						<h1>Brandon Smith</h1>
 					</div>
-					<div class="title">
+					<div class="job-title">
 						<h4>Front End Developer</h4>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="container">
+		<div class="container main-image">
 			<div class="row">
-				<div class="col-md-12 main-image">Main Image</div>
+				<div class="col-md-12 main-pic">
+					<picture>
+						<img src="images/main-image-1600_large_2x.jpg"
+							 srcset="images/main-image-1600_large_2x.jpg 1600w, images/main-image-800_medium_1x.jpg 800w, images/main-image-500_small_1x.jpg 500w"
+							 alt="Computer Screen With Code">
+					</picture>
+				</div>
 			</div>
 		</div>
-		<div class="container featured-work">
+		<div class="container featured-work text-center">
 			<div class="row">
 				<div class="col-md-12 featured-work-heading">
-					<h2>Featured Work</h2>
+					<h2 class="text-left text-muted">Featured Work</h2>
 				</div>
 			</div>
+			<hr class="featured-border">
 			<div class="row">
 				<div class="col-md-4 work-info">
-					<div class="work-image">Work Image</div>
-					<div class="work-title">Work Title</div>
+					<div class="work-image center-block">
+						<img src="images/Blog-500_small_1x.png" alt="Blog Website Screenshot">
+					</div>
+					<div class="work-title">
+						<h4>Blog</h4>
+					</div>
 					<div class="work-link">
-						<a href="#">work Link</a>
+						<a href="https://github.com/BrandonSmith8038/Udacity-FrontEndNano/tree/master/portfolio/Projects/Blog-Project-Part%20-3-Start" target="_blank">View Repo</a>
 					</div>
 				</div>
 				<div class="col-md-4 work-info">
-					<div class="work-image">Work Image</div>
-					<div class="work-title">Work Title</div>
+					<div class="work-image center-block">
+						<img src="images/Home-Town-App-500_small_1x.png" alt="Home Town App Screenshot">
+					</div>
+					<div class="work-title">
+						<h4>Home Town App</h4>
+					</div>
 					<div class="work-link">
-						<a href="#">work Link</a>
+						<a href="https://github.com/BrandonSmith8038/Udacity-FrontEndNano/tree/master/portfolio/Projects/Project-Part-3-Home-Town-App" target="_blank">View Repo</a>
 					</div>
 				</div>
 				<div class="col-md-4 work-info">
-					<div class="work-image">Work Image</div>
-					<div class="work-title">Work Title</div>
+					<div class="work-image center-block">
+						<img src="images/TopList-500_small_1x.png" alt="Toplist Website Screenshot">
+					</div>
+					<div class="work-title">
+						<h4>Top List</h4>
+					</div>
 					<div class="work-link">
-						<a href="#">work Link</a>
+						<a href="https://github.com/BrandonSmith8038/Udacity-FrontEndNano/tree/master/portfolio/toplist" target="_blank">View Repo</a>
 					</div>
 				</div>
 			</div>
