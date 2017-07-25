@@ -6,7 +6,7 @@
 	margin-top: 15px;
 }
 
-.header {
+header {
 	border-bottom: 3px solid #90060c;
 	font-family: 'Share Tech', sans-serif;
 	margin-bottom: 20px;
@@ -51,7 +51,7 @@
 .work-image {
 	height: 300px;
 	overflow: hidden;
-	width: 300px;
+	max-width: 300px;
 }
 
 .work-link a {
@@ -61,10 +61,36 @@
 	font-weight: 200;
 	text-decoration: none;
 	transition: 0.7s;
+	padding-bottom: 250px;
 }
 
 .work-link a:hover {
 	color: black;
 
 }
+
+@media screen and (max-width: 800px) {
+	.main-pic {
+		height: 150px;
+	}
+	.work-info {
+    margin-bottom: 30px;
+	}
+	.work-link a {
+		padding-bottom: 50px;
+	}
+	.name h1{
+		font-size: 37px;
+	}
+}
+
+@media screen and (min-width: 801px) and (max-width: 1199px) {
+	.main-pic {
+		height: 250px;
+	}
+
+@media screen and (min-width: 1200px) {
+	.main-pic {
+		height: 400px;
+	}
 
