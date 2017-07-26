@@ -13,3 +13,11 @@ http://lorempixel.com/350/150/animals/
 Good luck!
 
 */
+$(document).ready(function() {
+
+    var articleItem = $(".article-item");
+    var image = articleItem.children("img");
+    var src = "http://lorempixel.com/350/150/animals/";
+    image.attr('src', src)
+
+});
