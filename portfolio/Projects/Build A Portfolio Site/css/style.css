@@ -2,13 +2,14 @@
 	outline: 2px solid red;
 }
 */
+
 .logo {
 	margin-top: 15px;
 }
 
 header {
 	border-bottom: 3px solid #90060c;
-	font-family: 'Share Tech', sans-serif;
+	font-family: "Share Tech", sans-serif;
 	margin-bottom: 20px;
 	padding: 10px 20px 20px 20px;
 }
@@ -16,6 +17,12 @@ header {
 .name h1 {
 	font-size: 50px;
 	text-transform: uppercase;
+}
+
+.bio {
+	font-family: "Montserrat", sans-serif;
+	font-size: 25px;
+	margin-top: 30px;
 }
 
 .featured-work-heading h2 {
@@ -43,7 +50,7 @@ header {
 }
 
 .work-title h4 {
-	font-family: 'Share Tech', sans-serif;
+	font-family: "Share Tech", sans-serif;
 	font-size: 35px;
 	text-transform: uppercase;
 }
@@ -56,7 +63,7 @@ header {
 
 .work-link a {
 	color: #90060c;
-	font-family: 'Montserrat', sans-serif;
+	font-family: "Montserrat", sans-serif;
 	font-size: 14px;
 	font-weight: 200;
 	text-decoration: none;
