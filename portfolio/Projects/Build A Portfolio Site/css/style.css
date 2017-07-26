@@ -3,6 +3,13 @@
 }
 */
 
+@import url(http://weloveiconfonts.com/api/?family=zocial);
+
+/* zocial */
+[class*="zocial-"]:before {
+  font-family: 'zocial', sans-serif;
+}
+
 .logo {
 	margin-top: 15px;
 }
@@ -30,12 +37,19 @@ header {
 	font-size: 34px;
 }
 
-.featured-border {
+.featured-border,
+.social-border {
 	border: 0;
 	box-shadow: 0 10px 10px -10px #8c8b8b inset;
 	height: 10px;
 	margin-top: 5px;
 	width: 50%;
+}
+
+.contact-me h4 {
+	font-family: "Share Tech", sans-serif;
+	font-size: 40px;
+	margin-top: 100px;
 }
 
 .main-image {
@@ -74,6 +88,14 @@ header {
 .work-link a:hover {
 	color: black;
 
+}
+.social-icons a {
+	font-size: 50px;
+	color: black;
+	transition: 300ms;
+}
+.social-icons a:hover{
+	color: #90060c;
 }
 
 @media screen and (max-width: 800px) {
