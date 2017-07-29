@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Drawing Text Quiz</title>
+</head>
+<body>
+<canvas id="c" width="500" height="800" ></canvas>
+
+<script>
+	
+var c = document.querySelector("#c");
+var ctx = c.getContext("2d");
+
+var textX = c.width / 2;
+console.log("c.width", c.width);
+var textY = 90;
+var text = "CANVAS MEMES!"
+
+ctx.font = '36px impact';
+ctx.textAlign = "center";
+
+ctx.fillStyle = "red";
+ctx.fillRect(0, 0, 500, 800);
+
+ctx.fillStyle = "white";
+ctx.fillText(text, textX, textY);
+
+ctx.lineWidth=3;
+ctx.strokeText(text, textX, textY);
+
+
+</script>	
+</body>
+</html>
