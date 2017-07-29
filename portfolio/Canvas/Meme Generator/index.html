@@ -50,15 +50,20 @@
       
       ctx.font = "40px impact";
       ctx.textAlign = "center";
+      ctx.fillStyle = "white"
+      ctx.lineWidth=2;
 
       ctx.drawImage(image,0,0);
 
-      ctx.fillStyle = "white"
-      ctx.fillText(topLine, canvas.width / 2, 40);
-      ctx.strokeText(topLine, canvas.width / 2, 40);
-      ctx.lineWidth=2;
-      ctx.fillText(bottomLine, canvas.width / 2, 480);
-      ctx.strokeText(bottomLine, canvas.width / 2, 480);
+      if (topLine != null){
+        ctx.fillText(topLine, canvas.width / 2, 40);
+        ctx.strokeText(topLine, canvas.width / 2, 40);
+      }
+      
+      if (bottomLine != null){
+        ctx.fillText(bottomLine, canvas.width / 2, 480);
+        ctx.strokeText(bottomLine, canvas.width / 2, 480);
+      }
     }
     
     function saveFile() {
