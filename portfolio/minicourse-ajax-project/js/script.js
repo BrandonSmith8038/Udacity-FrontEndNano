@@ -44,6 +44,31 @@ function loadData() {
     })
 
 
+  //Wikipedia Articles
+
+  var wikiUrl = "http://en.wikipedia.org/w/api.php?action=opensearch&search=" + cityStr + "&format=json&callback=wikiCallback";
+  
+  //error handling
+  var wikiRequestTimeout = setTimeout(function(){
+    $wikiElem.text("failed to get the wikipedia articles");
+  }, 3000);
+  
+  $.ajax({
+    url: wikiUrl,
+    dataType: "jsonp",
+    success: function(response) {
+      var articleList = response[1];
+
+      for (var i = 0; i < 10; i++) {
+        var articleStr = articleList[i];
+        var url = "http://en.wikipedia.org/wiki/" + articleStr;
+        $wikiElem.append('<li><a target="_blank" href="' + url + ' ">' + articleStr + '</a></li>');
+      }
+      clearTimeout(wikiRequestTimeout);
+    }
+  })
+
+
   return false;
 }
 
