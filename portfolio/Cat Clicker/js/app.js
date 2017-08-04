@@ -22,40 +22,72 @@ var cat = [{
 
 ];
 
-
-
-function selectCat(player) {
+function addForm(player){
+	
 	var area = "playArea" + player;
 
 	$("#main").append("<div class='col-md-6' id=" + area + "></div>");
 	$("#playArea" + player).append("<div id='catName" + player + "'></div>");
-	$("#playArea" + player).append("<form><select id='cats'></slecet><form>")
-		$.map(cat, function(value, index) {
-				$("#cats").append("<option value='" + value.name + "'>" + value.name + "</option>");
-	}
+	$("#playArea" + player).append("<form><select id='cats" + player + "'></slecet><form>")
+	$.map(cat, function(value, index) {
+			$("#cats" + player).append("<option value='" + value.name + "'>" + value.name + "</option>");
+		}
 
-			)
-				 }
-
-
-			function displayCat(player, index) {
-
-
-				$("#playArea" + player).append("<div id='score" + player + "'></div>")
-				$("#playArea" + player).append("<div id='catPic" + player + "'></div>")
-
-				$("#catName" + player).append("<h1>Player " + player + "</h1");
-				$("#catName" + player).append("<h2>" + cat[index].name + "</h2");
-				$("#catPic" + player).append("<img src='" + cat[index].picture + "' alt='Cat Pic'>");
+	)
+$("#cats" + player).change(function(){
+	selectCat(player);
+})
+	
+}
 
 
-				$("#catPic" + player).click(function() {
-					cat[index].score++;
-					$("#score" + player).html("<h2>Your Current Score Is: " + cat[index].score + "</h2>");
-				})
-			}
+function selectCat(player) {
+				var selectedCat = " ";
+				var formID = "#cats" + player;
+				switch ($(formID).val()){
+					case "Garfield":
+						selectedCat = "0"
+						break;
+					case "Tiger":
+						selectedCat = "1"
+						break;
+					case "Smokey":
+						selectedCat = "2"
+						break;
+					case "Oscar":
+						selectedCat = "3"
+						break;
+					case "Misty":
+						selectedCat = "4"
+						break;
+				}
+	displayCat("1",selectedCat);
+}
 
-selectCat("1");
-selectCat("2"); 
-displayCat("1", 4);
-displayCat("2", 3);
+
+function displayCat(player, index) {
+
+
+	$("#playArea" + player).append("<div id='score" + player + "'></div>")
+	$("#playArea" + player).append("<div id='catPic" + player + "'></div>")
+
+	$("#catName" + player).html("<h1>Player " + player + "</h1");
+	$("#catName" + player).html("<h2>" + cat[index].name + "</h2");
+	$("#catPic" + player).html("<img src='" + cat[index].picture + "' alt='Cat Pic'>");
+
+
+	$("#catPic" + player).click(function() {
+		cat[index].score++;
+		$("#score" + player).html("<h2>Your Current Score Is: " + cat[index].score + "</h2>");
+	})
+}
+
+addForm("1")
+// displayCat("2",selectCat("2"));
+
+selectCat("1")
+
+// alert(selectCat());
+//  selectCat("2");
+// displayCat("1", 4);
+// displayCat("2", 3);
