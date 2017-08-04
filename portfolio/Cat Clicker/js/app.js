@@ -72,7 +72,7 @@ function displayCat(player, index) {
 	$("#playArea" + player).append("<div id='catPic" + player + "'></div>")
 
 	$("#catName" + player).html("<h1>Player " + player + "</h1");
-	$("#catName" + player).html("<h2>" + cat[index].name + "</h2");
+	$("#catName" + player).append("<h2>" + cat[index].name + "</h2");
 	$("#catPic" + player).html("<img src='" + cat[index].picture + "' alt='Cat Pic'>");
 
 
