@@ -37,7 +37,7 @@ function displayCat(player,index) {
 	
 	$("#catPic" + player).click(function() {
 		cat[index].score++;
-		$("#score" + player).innerHTML = "<h2>Your Current Score Is: " + cat[index].score + "</h2>";
+		$("#score" + player).html("<h2>Your Current Score Is: " + cat[index].score + "</h2>");
 	})
 }
 
