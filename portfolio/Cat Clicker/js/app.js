@@ -1,29 +1,45 @@
-var score1 = 0;
-var score2 = 0;
+var cat = [{
+		"name": "Garfield",
+		"picture": "images/cat2-800_small_1x.jpg",
+		"score": 0
+	}, {
+		"name": "Tiger",
+		"picture": "images/cat3-800_small_1x.jpg",
+		"score": 0
+	}, {
+		"name": "Smokey",
+		"picture": "images/cat4-800_small_1x.jpg",
+		"score": 0
+	}, {
+		"name": "Oscar",
+		"picture": "images/cat5-800_small_1x.png",
+		"score": 0
+	}, {
+		"name": "Misty",
+		"picture": "images/cat6-800_small_1x.jpg",
+		"score": 0
+	},
 
-var catNames = [
-	"Garfield",
-	"Kemrit",
-	"Spot",
-	"Cliford",
-	"Fred",
-	"Gabby",
-	"Lisa"
 ];
 
-var cat1Name = catNames[Math.floor(Math.random() * 7)];
-var cat2Name = catNames[Math.floor(Math.random() * 7)];
 
-document.getElementById("cat1Name").innerHTML = "<h3>" + cat1Name + "</h3>";
-document.getElementById("cat2Name").innerHTML = "<h3>" + cat2Name + "</h3>";
+function displayCat(player,index) {
+	var area = "playArea" + player;
+	$("#main").append("<div class='col-md-6' id=" + area + "></div>");
+	$("#playArea" + player).append("<div id='catName" + player + "'></div>")
+	$("#playArea" + player).append("<div id='score" + player + "'></div>")
+	$("#playArea" + player).append("<div id='catPic" + player + "'></div>")
+	
+	$("#catName" + player).append("<h1>Player " + player + "</h1");
+	$("#catName" + player).append("<h2>" + cat[index].name + "</h2");
+	$("#catPic" + player).append("<img src='" + cat[index].picture + "' alt='Cat Pic'>");
 
+	
+	$("#catPic" + player).click(function() {
+		cat[index].score++;
+		$("#score" + player).innerHTML = "<h2>Your Current Score Is: " + cat[index].score + "</h2>";
+	})
+}
 
-
-document.getElementById("catPic1").addEventListener('click', function() {
-	score1++;
-	document.getElementById("score1").innerHTML = "<h1>Your Current Score Is: " + score1 + "</h1>";
-}, false)
-document.getElementById("catPic2").addEventListener('click', function() {
-	score2++;
-	document.getElementById("score2").innerHTML = "<h1>Your Current Score Is: " + score2 + "</h1>";
-}, false)
+displayCat("1",4);
+displayCat("2",3);
