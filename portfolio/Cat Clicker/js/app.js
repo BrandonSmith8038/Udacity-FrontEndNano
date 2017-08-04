@@ -88,20 +88,24 @@ function displayCat(player, index) {
 		cat[index].score++;
 		$("#score" + player).html("<h2>Your Current Score Is: " + cat[index].score + "</h2>");
 
-			$("#reset").click(function() {
-				cat[index].score = 0;
-				$("#score" + player).html("<h2>Your Current Score Is: " + cat[index].score + "</h2>");
+		$("#reset").click(function() {
+			cat[index].score = 0;
+			$("#score" + player).html("<h2>Your Current Score Is: " + cat[index].score + "</h2>");
 
-			})
-		
+		})
+
 	})
 
 }
 
+$("#play").click(function() {
 
+	addForm("1")
+	selectCat("1")
 
-addForm("1")
-selectCat("1")
+	addForm("2")
+	selectCat("2")
+	
+	$("#play").toggle();
 
-addForm("2")
-selectCat("2")
+})
