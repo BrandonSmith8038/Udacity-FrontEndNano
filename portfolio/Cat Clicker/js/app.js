@@ -27,8 +27,8 @@ var cat = [{
 //Select options are populated from the Cat array of objects. 
 //When the value is changed selectCat is rerun to update the variable
 
-function addForm(player){
-	
+function addForm(player) {
+
 	var area = "playArea" + player;
 
 	$("#main").append("<div class='col-md-6' id=" + area + "></div>");
@@ -39,35 +39,35 @@ function addForm(player){
 		}
 
 	)
-$("#cats" + player).change(function(){
-	selectCat(player);
-})
-	
+	$("#cats" + player).change(function() {
+		selectCat(player);
+	})
+
 }
 
 //Choose the cat index based on the value of the select field
 //Passes the index to display cat and runs the function
 function selectCat(player) {
-				var selectedCat = " ";
-				var formID = "#cats" + player;
-				switch ($(formID).val()){
-					case "Garfield":
-						selectedCat = "0"
-						break;
-					case "Tiger":
-						selectedCat = "1"
-						break;
-					case "Smokey":
-						selectedCat = "2"
-						break;
-					case "Oscar":
-						selectedCat = "3"
-						break;
-					case "Misty":
-						selectedCat = "4"
-						break;
-				}
-	displayCat(player,selectedCat);
+	var selectedCat = " ";
+	var formID = "#cats" + player;
+	switch ($(formID).val()) {
+		case "Garfield":
+			selectedCat = "0"
+			break;
+		case "Tiger":
+			selectedCat = "1"
+			break;
+		case "Smokey":
+			selectedCat = "2"
+			break;
+		case "Oscar":
+			selectedCat = "3"
+			break;
+		case "Misty":
+			selectedCat = "4"
+			break;
+	}
+	displayCat(player, selectedCat);
 }
 
 
@@ -87,14 +87,21 @@ function displayCat(player, index) {
 	$("#catPic" + player).click(function() {
 		cat[index].score++;
 		$("#score" + player).html("<h2>Your Current Score Is: " + cat[index].score + "</h2>");
+
+			$("#reset").click(function() {
+				cat[index].score = 0;
+				$("#score" + player).html("<h2>Your Current Score Is: " + cat[index].score + "</h2>");
+
+			})
+		
 	})
+
 }
+
+
 
 addForm("1")
 selectCat("1")
 
 addForm("2")
 selectCat("2")
-
-
-
