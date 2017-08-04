@@ -23,43 +23,39 @@ var cat = [{
 ];
 
 
-function availableCats(){
-		$.map(cat,  function (value, index){
-			$("#main").append("<div class='col-md-12'</div>");
-			$("#main").append("<ul id='available-cats'</div>");
-			$("#available-cats").append("<li class='cat-names' id='" + value.name + "'>" + value.name + "</li");
 
-		})
-	
-}
-
-	
-
-
-function displayCat(player, index) {
+function selectCat(player) {
 	var area = "playArea" + player;
 
-
 	$("#main").append("<div class='col-md-6' id=" + area + "></div>");
-	$("#playArea" + player).append("<div id='catName" + player + "'></div>")
-	$("#playArea" + player).append("<div id='score" + player + "'></div>")
-	$("#playArea" + player).append("<div id='catPic" + player + "'></div>")
+	$("#playArea" + player).append("<div id='catName" + player + "'></div>");
+	$("#playArea" + player).append("<form><select id='cats'></slecet><form>")
+		$.map(cat, function(value, index) {
+				$("#cats").append("<option value='" + value.name + "'>" + value.name + "</option>");
+	}
 
-	$("#catName" + player).append("<h1>Player " + player + "</h1");
-	$("#catName" + player).append("<h2>" + cat[index].name + "</h2");
-	$("#catPic" + player).append("<img src='" + cat[index].picture + "' alt='Cat Pic'>");
+			)
+				 }
 
 
-	$("#catPic" + player).click(function() {
-		cat[index].score++;
-		$("#score" + player).html("<h2>Your Current Score Is: " + cat[index].score + "</h2>");
-	})
-}
+			function displayCat(player, index) {
 
-function scoreTraking() {
 
-}
+				$("#playArea" + player).append("<div id='score" + player + "'></div>")
+				$("#playArea" + player).append("<div id='catPic" + player + "'></div>")
 
-availableCats();
+				$("#catName" + player).append("<h1>Player " + player + "</h1");
+				$("#catName" + player).append("<h2>" + cat[index].name + "</h2");
+				$("#catPic" + player).append("<img src='" + cat[index].picture + "' alt='Cat Pic'>");
+
+
+				$("#catPic" + player).click(function() {
+					cat[index].score++;
+					$("#score" + player).html("<h2>Your Current Score Is: " + cat[index].score + "</h2>");
+				})
+			}
+
+selectCat("1");
+selectCat("2"); 
 displayCat("1", 4);
 displayCat("2", 3);
