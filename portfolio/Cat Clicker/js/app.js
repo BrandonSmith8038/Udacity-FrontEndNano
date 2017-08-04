@@ -22,6 +22,11 @@ var cat = [{
 
 ];
 
+//Adds form to the page. Creates the inital half page width div
+//Creates the cat name div
+//Select options are populated from the Cat array of objects. 
+//When the value is changed selectCat is rerun to update the variable
+
 function addForm(player){
 	
 	var area = "playArea" + player;
@@ -40,7 +45,8 @@ $("#cats" + player).change(function(){
 	
 }
 
-
+//Choose the cat index based on the value of the select field
+//Passes the index to display cat and runs the function
 function selectCat(player) {
 				var selectedCat = " ";
 				var formID = "#cats" + player;
@@ -61,10 +67,12 @@ function selectCat(player) {
 						selectedCat = "4"
 						break;
 				}
-	displayCat("1",selectedCat);
+	displayCat(player,selectedCat);
 }
 
 
+
+//Displays the player name, and score. Updates the score with each click. 
 function displayCat(player, index) {
 
 
@@ -83,11 +91,10 @@ function displayCat(player, index) {
 }
 
 addForm("1")
-// displayCat("2",selectCat("2"));
-
 selectCat("1")
 
-// alert(selectCat());
-//  selectCat("2");
-// displayCat("1", 4);
-// displayCat("2", 3);
+addForm("2")
+selectCat("2")
+
+
+
