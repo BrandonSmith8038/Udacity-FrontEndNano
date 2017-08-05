@@ -1,0 +1,16 @@
+ul {
+	list-style: none;
+}
+li {
+	cursor: pointer;
+}
+img {
+	max-width: 500px;
+}
+#cat-list {
+	font-size: 30px;
+	padding-bottom: 15px;
+}
+#cat-name {
+	font-size: 30px;
+}
