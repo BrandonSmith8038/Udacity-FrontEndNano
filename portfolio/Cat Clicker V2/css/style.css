@@ -14,3 +14,6 @@ img {
 #cat-name {
 	font-size: 30px;
 }
+#options-panel {
+	display: none;
+}

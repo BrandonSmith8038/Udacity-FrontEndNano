@@ -37,6 +37,7 @@ var octopus = {
 
 		catListView.init();
 		catView.init();
+		adminView.init();
 	},
 
 	getCurrentCat: function() {
@@ -56,6 +57,48 @@ var octopus = {
 	incrementCounter: function() {
 		model.currentCat.score++
 			catView.render();
+	},
+	
+	//Hides options panel on load
+	toggleOptions: function(){
+		$(adminView.optionsElem).toggle();
+	},
+	
+	adminSave: function(){
+		this.changeName();
+		this.changeScore();
+		this.changeURL();
+		this.toggleOptions();
+		catView.render();
+		catListView.render();
+	},
+	
+	changeName: function(){
+		
+		var newName = document.getElementById("admin-name").value;
+		if(newName.length > 1){
+		model.currentCat.name = newName;
+		document.getElementById("admin-name").value = " ";
+		}
+		
+	},
+	changeScore: function(){
+		
+		var newScore = document.getElementById("click-counter").value;
+		if(newScore.length > 1){
+		model.currentCat.score = newScore;
+		document.getElementById("click-counter").value = " "
+		}
+		
+	},
+	changeURL: function(){
+		
+		var newURL = document.getElementById("admin-url").value;
+		if(newURL.length > 1){
+		model.currentCat.picture = newURL;
+		document.getElementById("admin-url").value = " "
+		}
+		
 	}
 
 };
@@ -67,9 +110,11 @@ var catView = {
 	init: function() {
 		//store pointers to our DOM elements for easy access later
 		this.catElem = document.getElementById("play-area");
-		this.catNameElem = document.getElementById("cat-name");
+		this.catURLElem = document.getElementById("cat-name");
 		this.catImageElem = document.getElementById("cat-pic");
 		this.countElem = document.getElementById("score");
+		this.catNameElem = document.getElementById("cat-name");
+
 
 		//on click, increment the current cat's counter
 		this.catImageElem.addEventListener('click', function() {
@@ -84,7 +129,7 @@ var catView = {
 		
 	render: function(){
 		var currentCat = octopus.getCurrentCat();
-		this.countElem.textContent = currentCat.score;
+		this.countElem.textContent = "Your Current Click Count Is: " + currentCat.score;
 		this.catNameElem.textContent = currentCat.name;
 		this.catImageElem.src = currentCat.picture;
 	}
@@ -125,6 +170,43 @@ var catListView = {
 	}
 	
 };
+
+var adminView = {
+	
+	init: function(){
+		//store pointers to our DOM elements for easy access later
+		this.adminButton = document.getElementById("open-button");
+		this.optionsElem = document.getElementById("options-panel");
+		this.nameInput = document.getElementById("admin-name");
+		this.urlInput = document.getElementById("admin-url");
+		this.counterInput = document.getElementById("click-counter");
+		this.adminCancel = document.getElementById("cancel-button");
+		this.adminSave = document.getElementById("save-button");
+		this.adminReset = document.getElementById("reset-button");
+		
+
+		this.render();
+
+
+	},
+	
+	render: function(){
+    this.adminButton.addEventListener("click",function(){
+			octopus.toggleOptions();
+		})
+		 this.adminCancel.addEventListener("click",function(){
+			octopus.toggleOptions();
+		})
+		 this.adminSave.addEventListener("click",function(){
+			octopus.adminSave();
+		})
+		this.adminReset.addEventListener("click",function(){
+			catView.render();
+		})
+		
+		
+	}
+}
 
 
 
