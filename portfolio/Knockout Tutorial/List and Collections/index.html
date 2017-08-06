@@ -13,9 +13,13 @@
         <th>Passenger name</th><th>Meal</th><th>Surcharge</th><th></th>
     </tr></thead>
     <!-- Todo: Generate table body -->
-    <tbody></tbody>
+    <tbody data-bind="foreach: seats">
+		<td data-bind="text: name"></td>
+		<td data-bind="text: meal().mealName"></td>
+		<td data-bind="text: meal().price"></td>
+		</tbody>
 </table>
-
+<button data-bind="click: addSeat">Add Seat</button>
 	
 <script src="viewModel.js"></script>	
 </body>
