@@ -6,7 +6,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
 </head>
 <body>
-<h2>Your seat reservations</h2>
+<h2>Your seat reservations(<span data-bind="text: seats().length"></span>)</h2>
 
 <table>
     <thead><tr>
@@ -14,12 +14,18 @@
     </tr></thead>
     <!-- Todo: Generate table body -->
     <tbody data-bind="foreach: seats">
-		<td data-bind="text: name"></td>
-		<td data-bind="text: meal().mealName"></td>
-		<td data-bind="text: meal().price"></td>
+		<tr>
+			<td><input data-bind="text: name"/></td>
+			<td><select data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'"/></td>
+			<td data-bind="text: formattedPrice"></td>
+			<td><a href="#" data-bind="click: $root.removeSeat">Remove</a></td>
+		</tr>
 		</tbody>
 </table>
-<button data-bind="click: addSeat">Add Seat</button>
+<button data-bind="click: addSeat, enable: seats().length < 5">Add Seat</button>
+<h3 data-bind="visible: totalSurcharge() > 0">
+	Total surcharge: $<span data-bind="text: totalSurcharge().toFixed(2)"></span>
+</h3>
 	
 <script src="viewModel.js"></script>	
 </body>
