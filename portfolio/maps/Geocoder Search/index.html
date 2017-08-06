@@ -20,7 +20,7 @@ and Google's Maps API Course, Lesson 2 -->
         position: absolute;
         top: 10px;
         left: 65%;
-        z-index: 5;
+        z-index: 1;
         height:90%;
         background-color: #fff;
         padding: 5px;
@@ -60,6 +60,7 @@ and Google's Maps API Course, Lesson 2 -->
           if (status === google.maps.GeocoderStatus.OK) {
             resultsMap.setCenter(results[0].geometry.location);
             resultsMap.setZoom(18);
+						window.alert(results[0].formatted_address);
             document.getElementById('firstComponent').innerHTML="The Formatted Address is: " + results[0].formatted_address;
             document.getElementById('secondComponent').innerHTML="The Location is " + results[0].geometry.location; // PUT STUFF HERE
           } else {
