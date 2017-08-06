@@ -1,0 +1,139 @@
+<!-- This is the corresponding "starter code" for 04_Hello Map in Udacity and Google's Maps
+API Course, Lesson 1 -->
+<html>
+ <head>
+ <!-- styles put here, but you can include a CSS file and reference it instead! -->
+   <style type="text/css">
+     html, body { height: 100%; margin: 0; padding: 0; }
+     #map { height: 100%; }
+   </style>
+ </head>
+ <body>
+   <div id="map">
+	 
+	 </div>
+   <div></div>
+   <script>
+     // TODO: Create a map variable
+		 var map;
+     // TODO: Complete the following function to initialize the map
+     function initMap() {
+       map = new google.maps.Map(document.getElementById('map'), {
+				 center: {lat: 33.44319, lng: -112.404341},
+				 zoom: 18,
+				 styles:
+				 [
+    {
+        "featureType": "administrative",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "lightness": 33
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#f2e5d4"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.park",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#c5dac6"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.park",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "lightness": 20
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "all",
+        "stylers": [
+            {
+                "lightness": 20
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#c5c6c6"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#e4d7c6"
+            }
+        ]
+    },
+    {
+        "featureType": "road.local",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#fbfaf7"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "color": "#acbcc9"
+            }
+        ]
+    }
+]
+			 });
+			 var tribeca = {lat: 33.44319, lng: -112.404341};
+			 var marker = new google.maps.Marker({
+				 position: tribeca,
+				 map: map,
+				 titile: "My House",
+				 animation: google.maps.Animation.DROP
+			 });
+			 var infowindow = new google.maps.InfoWindow({
+				 content: "This is where Brandon, Amber, Kynlee, Lily and Lasya lives."
+			 });
+			 marker.addListener('click', function(){
+				 infowindow.open(map,marker)
+			 });
+				 // TODO: use a constructor to create a new map JS object. You can use the coordinates
+       // we used, 40.7413549, -73.99802439999996 or your own!
+     }
+   </script>
+   <!--TODO: Load the JS API ASYNCHRONOUSLY below.-->
+   <script async defer
+	 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf_i4bvf0nNDegzKpHeaqbBAzLowsXhWg&callback=initMap">
+   </script>
+ </body>
