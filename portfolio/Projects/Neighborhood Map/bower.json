@@ -1,0 +1,22 @@
+{
+  "name": "Neighborhood Map",
+  "homepage": "https://github.com/BrandonSmith8038/Udacity-FrontEndNano",
+  "authors": [
+    "Brandon Smith <Brandon@reddirtwebdesign.com>"
+  ],
+  "description": "Neighborhood Map project for the Udacity Front End Nanodegree Program",
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "knockout": "^3.4.2"
+  }
+}

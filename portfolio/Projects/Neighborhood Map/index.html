@@ -1,13 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title>Neighborhood Map</title>
-		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-	</head>
-	<body>
-		
-	</body>
-	<script src="bower_components/knockout/dist/knockout.js" ></script>
-	<script src="js/app.js"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Neighborhood Map</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="wrapper">
+        <button class="btn btn-success" id="toggle-options">Toggle Menu</button>
+        <div id="side-wrapper">
+            <div class="marker-list">
+                <ul sidebar-nav>
+                    <li>Lorem ipsum dolor sit amet.</li>
+                    <li>Lorem ipsum dolor sit amet.</li>
+                    <li>Lorem ipsum dolor sit amet.</li>
+                    <li>Lorem ipsum dolor sit amet.</li>
+                    <li>Lorem ipsum dolor sit amet.</li>
+                </ul>
+            </div>
+        </div>
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12" id="map">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel delectus, vero consectetur a accusamus facere odio fuga tempora. Aut at modi dignissimos voluptatibus corporis quasi mollitia fugit hic porro cupiditate, excepturi voluptate eius saepe atque ad. Culpa architecto, repellendus omnis. Mollitia, culpa, ipsam. Eaque velit modi eligendi officia repudiandae assumenda dolores excepturi alias eos molestias impedit aspernatur corrupti omnis quas, illo necessitatibus maiores architecto, ea dicta laboriosam quidem harum animi! Incidunt odit voluptatibus rem, dicta magni iusto. Explicabo quas exercitationem, tempore alias assumenda qui nam velit veniam repellendus excepturi neque saepe eveniet nostrum architecto sequi asperiores recusandae, accusantium animi tempora.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="bower_components/knockout/dist/knockout.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="js/app.js"></script>
+<script>
+$("#toggle-options").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("menu-displayed");
+});
+</script>
+
 </html>
