@@ -4,12 +4,11 @@ var viewModel = function() {
     self.showTheMenu = ko.observable(false);
     
 
-
-
     self.showMenu = function() {
         self.showTheMenu(!self.showTheMenu());
     }
-};
 
+
+};
 
 ko.applyBindings(new viewModel());
