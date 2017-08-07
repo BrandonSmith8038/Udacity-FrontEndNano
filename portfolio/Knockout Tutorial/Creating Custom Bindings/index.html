@@ -8,7 +8,7 @@
     <script src="scripts/lib/sammy.js"></script>
 </head>
 <body>
-    <h3 data-bind="text: question"></h3>
+ <h3 data-bind="text: question"></h3>
 <p>Please distribute <b data-bind="text: pointsBudget"></b> points between the following options.</p>
 
 <table>
@@ -16,14 +16,14 @@
     <tbody data-bind="foreach: answers">
         <tr>
             <td data-bind="text: answerText"></td>
-            <td><select data-bind="options: [1,2,3,4,5], value: points"></select></td>
+            <td data-bind="starRating: points"></td>
         </tr>    
     </tbody>
 </table>
 
-<h3 data-bind="visible: pointsUsed() > pointsBudget">You've used too many points! Please remove some.</h3>
+<h3 data-bind="fadeVisible: pointsUsed() > pointsBudget">You've used too many points! Please remove some.</h3>
 <p>You've got <b data-bind="text: pointsBudget - pointsUsed()"></b> points left to use.</p>
-<button data-bind="enable: pointsUsed() <= pointsBudget, click: save">Finished</button>
+<button data-bind="jqButton: { enable: pointsUsed() <= pointsBudget }, click: save">Finished</button>
 <script src="viewModel.js"></script>    
 </body>
 </html>
