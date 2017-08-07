@@ -12,3 +12,11 @@ var viewModel = function() {
 };
 
 ko.applyBindings(new viewModel());
+
+
+function initMap() {
+	 var map = new google.maps.Map(document.getElementById('map'), {
+		center: {lat: 33.442930, lng: -112.407132 },
+		zoom: 13
+	});
+}
