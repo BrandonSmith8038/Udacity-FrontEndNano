@@ -1,8 +1,10 @@
 var viewModel = function() {
     var self = this;
 
+    //Variable used to toggle the slide out menu
     self.showTheMenu = ko.observable(true);
     
+    //variables to store the marker locations as well as the li's in the slide out menu
     self.markers = ko.observableArray ([
     	{title: 'Elementary School', location: {lat: 33.443027, lng: -112.407235}},
     	{title: 'High School', location: {lat: 33.437227, lng: -112.398954}},
@@ -11,6 +13,7 @@ var viewModel = function() {
     	{title: 'Walmart', location: {lat: 33.459454, lng: -112.394149}},
     ]);
 
+    //Toggles the visibility of the slide out menu
     self.showMenu = function() {
         self.showTheMenu(!self.showTheMenu());
     }
@@ -20,13 +23,14 @@ var viewModel = function() {
     
 ko.applyBindings(new viewModel());
 
-
+//Initialize The Map
 function initMap() {
 	 var map = new google.maps.Map(document.getElementById('map'), {
 		center: {lat: 33.450121, lng: -112.401882 },
 		zoom: 15,
 		disableDefaultUI: true
 	});
+	 //Place Markers On The Map
 	 var marker1 = new google.maps.Marker({
 	 	position: {lat: 33.437227, lng: -112.398954},
 	 	map: map,
