@@ -7,14 +7,13 @@
 }
 #side-wrapper {
 	background-color: #2c3e50;
-	z-index: 1;
-	position: absolute;
-	/*left: -1000px;*/
-	width: 250px;
 	height: 100%;
-	overflow-y: hidden;
 	opacity: 1;
+	overflow-y: hidden;
+	position: absolute;
 	transition:0.6s;
+	width: 250px;
+	z-index: 1;
 }
 h1.neighborhood-title {
     font-size: 32px;
@@ -22,17 +21,17 @@ h1.neighborhood-title {
 }
 
 ul.sidebar-nav {
+    font-size: 20px;
     list-style: none;
     padding: 15px;
-    font-size: 20px;
 }
 ul.sidebar-nav li{
 	padding-bottom: 10px;
 }
 
 input#search-place {
-    width: 100%;
     color: black;
+    width: 100%;
 }
 #search-form {
 	padding-left: 10px;
