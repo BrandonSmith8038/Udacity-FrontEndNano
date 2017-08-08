@@ -11,7 +11,6 @@
 
 <body>
     <div id="wrapper">
-        <button class="btn btn-success" id="toggle-options" data-bind="click: showMenu">Toggle Menu</button>
         <div id="side-wrapper" data-bind="visible: showTheMenu">
             <div class="marker-list">
                 <ul class="sidebar-nav">
@@ -23,10 +22,11 @@
                 </ul>
             </div>
         </div>
-        <div id="page-content-wrapper">
+        <div id="page-content-wrapper" data-bind = "style: {'padding-left': showTheMenu() ? '250px' : '0'}">
             <div class="container-fluid">
+        <button class="btn btn-success" id="toggle-options" data-bind="click: showMenu">Toggle Menu</button>
                 <div class="row">
-                    <div class="col-lg-12" id="map" data-bind = "style: {'padding-left': showTheMenu() ? '260px' : '0'}"></div>
+                    <div class="col-lg-12" id="map" ></div>
                 </div>
             </div>
         </div>

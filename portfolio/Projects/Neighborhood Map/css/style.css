@@ -1,3 +1,15 @@
+#map {
+	height: 100vh;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+    z-index: 1;
+    position: absolute;
+}
+
 .menu-displayed {
 	padding-left: 250px;
 }
