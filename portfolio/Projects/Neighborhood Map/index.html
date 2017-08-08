@@ -22,21 +22,20 @@
                 </ul>
             </div>
         </div>
-        <div id="page-content-wrapper" data-bind = "style: {'padding-left': showTheMenu() ? '250px' : '0'}">
+        <div id="page-content-wrapper" data-bind="style: {'padding-left': showTheMenu() ? '250px' : '0'}">
             <div class="container-fluid">
-        <button class="btn btn-success" id="toggle-options" data-bind="click: showMenu">Toggle Menu</button>
+                <button class="btn btn-success" id="toggle-options" data-bind="click: showMenu">Toggle Menu</button>
                 <div class="row">
-                    <div class="col-lg-12" id="map" ></div>
+                    <div class="col-lg-12" id="map"></div>
                 </div>
             </div>
         </div>
     </div>
- <script async defer 
- src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyCdU06yhbdisUl34IC0URTdU28qgZoywEc&callback=initMap">
+    <script async defer src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyCdU06yhbdisUl34IC0URTdU28qgZoywEc&callback=initMap">
     </script>
-<script src="bower_components/knockout/dist/knockout.js"></script>
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-<script src="js/app.js"></script>
+    <script src="bower_components/knockout/dist/knockout.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="js/app.js"></script>
 </body>
 
 </html>
