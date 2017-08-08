@@ -16,5 +16,27 @@
 	opacity: 1;
 	transition:0.6s;
 }
+h1.neighborhood-title {
+    font-size: 32px;
+    padding: 5px;
+}
+
+ul.sidebar-nav {
+    list-style: none;
+    padding: 15px;
+    font-size: 20px;
+}
+ul.sidebar-nav li{
+	padding-bottom: 10px;
+}
+
+input#search-place {
+    width: 100%;
+    color: black;
+}
+#search-form {
+	padding-left: 10px;
+	padding-right: 10px;
+}
 
 

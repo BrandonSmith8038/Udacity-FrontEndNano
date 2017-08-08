@@ -1,16 +1,23 @@
 var viewModel = function() {
     var self = this;
 
-    self.showTheMenu = ko.observable(false);
+    self.showTheMenu = ko.observable(true);
     
+    self.markers = ko.observableArray ([
+    	{title: 'Elementary School', location: {lat: 33.443027, lng: -112.407235}},
+    	{title: 'High School', location: {lat: 33.437227, lng: -112.398954}},
+    	{title: 'Frys Marketplace', location: {lat: 33.437713, lng: -112.411278}},
+    	{title: 'Quick Trip', location: {lat: 33.453093, lng: -112.391905}},
+    	{title: 'Walmart', location: {lat: 33.459454, lng: -112.394149}},
+    ]);
 
     self.showMenu = function() {
         self.showTheMenu(!self.showTheMenu());
     }
 
-
 };
 
+    
 ko.applyBindings(new viewModel());
 
 
@@ -21,19 +28,19 @@ function initMap() {
 		disableDefaultUI: true
 	});
 	 var marker1 = new google.maps.Marker({
-	 	position: {lat: 33.443082, lng: -112.409176},
+	 	position: {lat: 33.437227, lng: -112.398954},
 	 	map: map,
-	 	title: "Our House"
+	 	title: "High School"
 	 });
 	 var marker2 = new google.maps.Marker({
-	 	position: {lat: 33.443614, lng: -112.405996},
+	 	position: {lat: 33.437713, lng: -112.411278},
 	 	map: map,
-	 	title: "Our Old House"
+	 	title: "Fry's Marketplace"
 	 });
 	 var marker3 = new google.maps.Marker({
 	 	position: {lat: 33.443027, lng: -112.407235},
 	 	map: map,
-	 	title: "The School"
+	 	title: "Elementary School"
 	 });
 	 var marker4 = new google.maps.Marker({
 	 	position: {lat: 33.453093, lng: -112.391905},
@@ -43,6 +50,6 @@ function initMap() {
 	 var marker5 = new google.maps.Marker({
 	 	position: {lat: 33.459454, lng: -112.394149},
 	 	map: map,
-	 	title: "Quick Trip"
+	 	title: "Walmart"
 	 });
 }
