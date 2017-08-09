@@ -15,7 +15,8 @@
             <div class="marker-list">
                 <h1 class="neighborhood-title text-center">The Wildflower Neighborhood</h1>
                 <div class="form-group" id="search-form">
-                    <input type="text" id="search-place" placeholder="Find A Place">
+                    <input type="text" id="search-place" data-bind="textInput: searchTerm" placeholder="Find A Place">
+                    <p data-bind="text: searchTerm"></p>
                 </div>
                 <ul class="sidebar-nav" data-bind="foreach: places">
                     <li data-bind="text: title, click: testClick"></li>

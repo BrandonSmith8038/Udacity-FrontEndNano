@@ -1,11 +1,14 @@
 //View Model
-var places = [
+var places = ko.observableArray([
     { title: 'Elementary School', location: { lat: 33.443027, lng: -112.407235 } },
     { title: 'High School', location: { lat: 33.437227, lng: -112.398954 } },
     { title: 'Frys Marketplace', location: { lat: 33.437713, lng: -112.411278 } },
     { title: 'Quick Trip', location: { lat: 33.453093, lng: -112.391905 } },
     { title: 'Walmart', location: { lat: 33.459454, lng: -112.394149 } },
-];
+    ]);
+console.log("places", places);
+
+var searchTerm = ko.observable("");
 
 var viewModel = function() {
     var self = this;
@@ -20,10 +23,11 @@ var viewModel = function() {
         self.showTheMenu(!self.showTheMenu());
     }
 
-    
-
-
-
+    self.testSearch = function(){
+        if(searchTerm() == "a") {
+            console.log("match");
+        }
+    }
 }
 ko.applyBindings(new viewModel());
 //Model
@@ -42,9 +46,9 @@ var largeInfoWindow = new google.maps.InfoWindow();
 var bounds = new google.maps.LatLngBounds();
 
     //Loop through the places array and place them on map
-    for (var i = 0; i < places.length; i++) {
-        var location = places[i].location;
-        var title = places[i].title
+    for (var i = 0; i < places().length; i++) {
+        var location = places()[i].location;
+        var title = places()[i].title
 
         var marker = new google.maps.Marker({
             map: map,
@@ -103,3 +107,5 @@ function populateInfoWindow(marker, infowindow) {
                 }
             }
         }
+    
+   
