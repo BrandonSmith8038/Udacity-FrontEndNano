@@ -38,8 +38,8 @@ function initMap() {
         disableDefaultUI: true
     });
 
-    var largeInfoWindow = new google.maps.InfoWindow();
-    var bounds = new google.maps.LatLngBounds();
+var largeInfoWindow = new google.maps.InfoWindow();
+var bounds = new google.maps.LatLngBounds();
 
     //Loop through the places array and place them on map
     for (var i = 0; i < places.length; i++) {
@@ -71,6 +71,7 @@ function initMap() {
     }
     //Fit the map to the new bounds determined by the markers placed
     map.fitBounds(bounds);
+    
 };
 
 function populateInfoWindow(marker, infowindow) {
@@ -84,12 +85,21 @@ function populateInfoWindow(marker, infowindow) {
         });
     }
 }
-function testClick () {
-        var listTitle = this.title;
-        for(var i = 0;i < markers.length; i++) {
-            if(listTitle === markers[i].title){
-                // console.log(this.markers)
-                markers[i].setAnimation(google.maps.Animation.DROP);
+
+    function testClick () {
+    var largeInfoWindow = new google.maps.InfoWindow();
+            var listTitle = this.title;
+            for(var i = 0;i < markers.length; i++) {
+                if(listTitle === markers[i].title){
+                    // console.log(this.markers)
+           var self = markers[i];
+            markers[i].setAnimation(google.maps.Animation.BOUNCE);
+            setTimeout(function() {
+                console.log(self);
+                self.setAnimation(null);
+            }, 2000);
+
+            populateInfoWindow(self,largeInfoWindow);
+                }
             }
         }
-    }
