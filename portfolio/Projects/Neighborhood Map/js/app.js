@@ -52,8 +52,7 @@ function initMap() {
             position: location,
             title: title
         });
-        // marker.addListener('click', toggleBounce);
-        //Push the marker to our of markers.
+        //Push the marker to our array of markers.
         markers.push(marker);
         //Extend the boundaries of the map for each marker
         bounds.extend(marker.position);
@@ -61,6 +60,7 @@ function initMap() {
         marker.addListener('click', function() {
             populateInfoWindow(this, largeInfoWindow)
         });
+        //Add the bounce animation, stop after 2000ms
         marker.addListener('click', function() {
             var self = this;
             self.setAnimation(google.maps.Animation.BOUNCE);
@@ -85,11 +85,3 @@ function populateInfoWindow(marker, infowindow) {
         });
     }
 }
-
-// function toggleBounce() {
-//         if (this.getAnimation() !== null) {
-//           this.setAnimation(null);
-//         } else {
-//           this.setAnimation(google.maps.Animation.BOUNCE);
-//         }
-//       }
