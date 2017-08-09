@@ -27,6 +27,7 @@ ul.sidebar-nav {
 }
 ul.sidebar-nav li{
 	padding-bottom: 10px;
+	cursor: pointer;
 }
 
 input#search-place {

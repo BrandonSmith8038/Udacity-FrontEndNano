@@ -18,7 +18,7 @@
                     <input type="text" id="search-place" placeholder="Find A Place">
                 </div>
                 <ul class="sidebar-nav" data-bind="foreach: places">
-                    <li data-bind="text: title"></li>
+                    <li data-bind="text: title, click: testClick"></li>
                 </ul>
             </div>
         </div>

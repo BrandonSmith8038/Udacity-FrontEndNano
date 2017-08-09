@@ -11,7 +11,7 @@ var viewModel = function() {
     var self = this;
 
     //Variable used to toggle the slide out menu
-    self.showTheMenu = ko.observable(false);
+    self.showTheMenu = ko.observable(true);
 
     //variables to store the marker locations as well as the li's in the slide out menu
 
@@ -20,8 +20,7 @@ var viewModel = function() {
         self.showTheMenu(!self.showTheMenu());
     }
 
-    //Initialize The Map
-    //Place Markers On The Map
+    
 
 
 
@@ -85,3 +84,12 @@ function populateInfoWindow(marker, infowindow) {
         });
     }
 }
+function testClick () {
+        var listTitle = this.title;
+        for(var i = 0;i < markers.length; i++) {
+            if(listTitle === markers[i].title){
+                // console.log(this.markers)
+                markers[i].setAnimation(google.maps.Animation.DROP);
+            }
+        }
+    }
