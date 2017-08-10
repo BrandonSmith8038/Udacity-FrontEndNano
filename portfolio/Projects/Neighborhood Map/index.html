@@ -15,11 +15,11 @@
             <div class="marker-list">
                 <h1 class="neighborhood-title text-center">The Wildflower Neighborhood</h1>
                 <div class="form-group" id="search-form">
-                    <input type="text" id="search-place" data-bind="textInput: searchTerm" placeholder="Find A Place">
-                    <p data-bind="text: searchTerm"></p>
+                    <input type="text" id="search-place" placeholder="Find A Place">
+                    <p ></p>
                 </div>
-                <ul class="sidebar-nav" data-bind="foreach: places">
-                    <li data-bind="text: title, click: testClick"></li>
+                <ul class="sidebar-nav" data-bind="foreach: myPlaces">
+                    <li data-bind="text: title"></li>
                 </ul>
             </div>
         </div>
@@ -38,7 +38,7 @@
     </script>
     <script src="bower_components/knockout/dist/knockout.js"></script>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/startingOver.js"></script>
 </body>
 
 </html>
