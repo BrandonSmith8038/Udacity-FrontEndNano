@@ -5,35 +5,67 @@ var markers = [];
 
 
 var places = [{
-	title: 'Elementary School',
+	title: 'Senor Taco',
 	location: {
-		lat: 33.443027,
-		lng: -112.407235
+		lat: 33.452497,
+		lng: -112.391994
 	}
 }, {
-	title: 'High School',
+	title: 'Longhorn Corral',
 	location: {
-		lat: 33.437227,
-		lng: -112.398954
+		lat: 33.466377,
+		lng: -112.478517
 	}
 }, {
-	title: 'Frys Marketplace',
+	title: 'Roman\'s Oasis',
 	location: {
-		lat: 33.437713,
-		lng: -112.411278
+		lat: 33.435431,
+		lng: -112.421409
 	}
 }, {
-	title: 'Quick Trip',
+	title: 'Wildflower Bread Company',
 	location: {
-		lat: 33.453093,
-		lng: -112.391905
+		lat: 33.462247,
+		lng: -112.359319
 	}
 }, {
-	title: 'Walmart',
+	title: 'Yan\'s',
 	location: {
-		lat: 33.459454,
-		lng: -112.394149
+		lat: 33.456911,
+		lng: -112.393888
 	}
+}, {
+	title: 'Gus\'s New York Pizza & Bar',
+	location: {
+		lat: 33.465505,
+		lng: -112.356812
+	}
+}, {
+	title: 'Black Bear Diner',
+	location: {
+		lat: 33.456868,
+		lng: -112.341400
+	}
+}, {
+	title: 'Sammy\'s Burger',
+	location: {
+		lat: 33.452322,
+		lng: -112.391574
+	}
+}, {
+	title: 'Sal\'s Tuscan Grill',
+	location: {
+		lat: 33.463317,
+		lng: -112.344915
+	}
+}, {
+	title: 'Cracker Barrel Old Country Store',
+	location: {
+		lat: 33.459621,
+		lng: -112.357383
+	}
+
+
 }];
 
 var viewModel = function() {
@@ -45,35 +77,66 @@ var viewModel = function() {
 		}
 
 		self.myPlaces = ko.observableArray([{
-			title: 'Elementary School',
+			title: 'Senor Taco',
 			location: {
-				lat: 33.443027,
-				lng: -112.407235
+				lat: 33.452497,
+				lng: -112.391994
 			}
 		}, {
-			title: 'High School',
+			title: 'Longhorn Corral',
 			location: {
-				lat: 33.437227,
-				lng: -112.398954
+				lat: 33.466377,
+				lng: -112.478517
 			}
 		}, {
-			title: 'Frys Marketplace',
+			title: 'Roman\'s Oasis',
 			location: {
-				lat: 33.437713,
-				lng: -112.411278
+				lat: 33.435431,
+				lng: -112.421409
 			}
 		}, {
-			title: 'Quick Trip',
+			title: 'Wildflower Bread Company',
 			location: {
-				lat: 33.453093,
-				lng: -112.391905
+				lat: 33.462247,
+				lng: -112.359319
 			}
 		}, {
-			title: 'Walmart',
+			title: 'Yan\'s',
 			location: {
-				lat: 33.459454,
-				lng: -112.394149
+				lat: 33.456911,
+				lng: -112.393888
 			}
+		}, {
+			title: 'Gus\'s New York Pizza & Bar',
+			location: {
+				lat: 33.465505,
+				lng: -112.356812
+			}
+		}, {
+			title: 'Black Bear Diner',
+			location: {
+				lat: 33.456868,
+				lng: -112.341400
+			}
+		}, {
+			title: 'Sammy\'s Burger',
+			location: {
+				lat: 33.452322,
+				lng: -112.391574
+			}
+		}, {
+			title: 'Sal\'s Tuscan Grill',
+			location: {
+				lat: 33.463317,
+				lng: -112.344915
+			}
+		}, {
+			title: 'Cracker Barrel Old Country Store',
+			location: {
+				lat: 33.459621,
+				lng: -112.357383
+			}
+
 		}]);
 
 		self.clickMarker = function(places) {
@@ -83,7 +146,7 @@ var viewModel = function() {
 		}
 
 		//ko.computed and ko.utils.arrayFilter learned from http://www.knockmeout.net/2011/04/utility-functions-in-knockoutjs.html
-		
+
 		//Function to filter out the myPlaces() variable and the markers dependent on what is in the search box
 		self.filter = ko.observable('');
 		self.filteredLocations = ko.computed(function() {
@@ -121,7 +184,7 @@ function initMap() {
 			lat: 33.450121,
 			lng: -112.401882
 		},
-		zoom: 15,
+		zoom: 13,
 		disableDefaultUI: true
 	});
 	//Loop Through The Array Of Places and use the object properties to create markers on the map
@@ -152,15 +215,15 @@ function initMap() {
 		});
 
 	} //End of the markers loop
-	
-	function getFourSquareData(){
+
+	function getFourSquareData() {
 		var clientID = "O14P1ZP42RQEPCNZHR1PL2GTZAIWL3QT3BZMMVL21CJFVGRA";
 		var clientSecret = "C0D31BCWQ321L1TRV3DTSXYN43B1IJHWVFS4FEPKTXMEWBFL";
-		 var venueID = "4bc36ac9b492d13a25b8a860" 
+		var venueID = "4bc36ac9b492d13a25b8a860"
 		var baseURL = "https://api.foursquare.com/v2/venues/"
 		var date = new Date();
 		var version = date.getTime();
-		
+
 		var fourSquareUrl = baseURL + "" + venueID + "?v=" + version + "&client_id=" + clientID + "&client_secret=" + clientSecret;
 		console.log(fourSquareUrl);
 	}
@@ -168,11 +231,6 @@ function initMap() {
 
 	//Grabs place details and places into an info window above the marker
 	function showInfoWindow(marker, infowindow) {
-		var service = new google.maps.places.PlacesService(map);
-		service.getDetails({
-			placeId: marker.id
-		})
-		
 		if (infowindow.marker != marker) {
 			infowindow.setContent(marker.title);
 			infowindow.marker = marker;
@@ -184,14 +242,3 @@ function initMap() {
 	}
 
 } // End of  initMap Function
-
-
-
-
-
-
-
-
-
-
-

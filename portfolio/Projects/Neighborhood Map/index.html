@@ -4,16 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Neighborhood Map</title>
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0,">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/slide-out-menu.css">
+ <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Gloria+Hallelujah" rel="stylesheet">
 </head>
 
 <body>
     <div id="wrapper">
         <div id="side-wrapper" data-bind="visible: showTheMenu">
             <div class="marker-list">
-                <h1 class="neighborhood-title text-center">The Wildflower Neighborhood</h1>
+                <h1 class="neighborhood-title text-center">Goodyear<br> Good<br> Eats</h1>
+                
+              <div class="city-logo">
+                <img src="img/goodyear.png" alt="">
+              </div>
                 <div class="form-group" id="search-form">
                     <input type="text" id="search-place" placeholder="Find A Place" data-bind="textInput: filter">
                     <p ></p>
@@ -37,7 +43,7 @@
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/knockout/dist/knockout.js"></script>
     <script src="js/startingOver.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?libraries=places&v=3&key=AIzaSyCdU06yhbdisUl34IC0URTdU28qgZoywEc&callback=initMap">
+    <script async defer src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyCdU06yhbdisUl34IC0URTdU28qgZoywEc&callback=initMap">
     </script>
 </body>
 
