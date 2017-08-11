@@ -81,6 +81,33 @@ var viewModel = function() {
 			google.maps.event.trigger(places.marker, 'click');
 
 		}
+
+		//ko.computed and ko.utils.arrayFilter learned from http://www.knockmeout.net/2011/04/utility-functions-in-knockoutjs.html
+		
+		//Function to filter out the myPlaces() variable and the markers dependent on what is in the search box
+		self.filter = ko.observable('');
+		self.filteredLocations = ko.computed(function() {
+			var filter = self.filter().toLowerCase();
+			if (!filter) {
+				self.myPlaces().forEach(function(location) {
+					if (location.marker) {
+						location.marker.setVisible(true);
+					}
+				});
+				return self.myPlaces();
+			} else {
+				return ko.utils.arrayFilter(self.myPlaces(), function(location) {
+					if (location.title.toLowerCase().indexOf(filter) > -1) {
+						location.marker.setVisible(true);
+						return true
+					} else {
+						location.marker.setVisible(false)
+						return false
+					}
+				});
+			}
+		}, self);
+
 	} //End Of View Model
 var vm = new viewModel();
 ko.applyBindings(vm);
@@ -125,15 +152,15 @@ function initMap() {
 		});
 
 	} //End of the markers loop
-function showInfoWindow (marker, infowindow) {
-	if (infowindow.marker != marker){
-		infowindow.setContent(marker.title);
-		infowindow.marker = marker;
-		infowindow.open(map, marker);
-		infowindow.addListener('closeclick', function(){
-			marker.setAnimation(null);
-		})
+	function showInfoWindow(marker, infowindow) {
+		if (infowindow.marker != marker) {
+			infowindow.setContent(marker.title);
+			infowindow.marker = marker;
+			infowindow.open(map, marker);
+			infowindow.addListener('closeclick', function() {
+				marker.setAnimation(null);
+			})
+		}
 	}
-}
 
 } // End of  initMap Function
