@@ -152,7 +152,27 @@ function initMap() {
 		});
 
 	} //End of the markers loop
+	
+	function getFourSquareData(){
+		var clientID = "O14P1ZP42RQEPCNZHR1PL2GTZAIWL3QT3BZMMVL21CJFVGRA";
+		var clientSecret = "C0D31BCWQ321L1TRV3DTSXYN43B1IJHWVFS4FEPKTXMEWBFL";
+		 var venueID = "4bc36ac9b492d13a25b8a860" 
+		var baseURL = "https://api.foursquare.com/v2/venues/"
+		var date = new Date();
+		var version = date.getTime();
+		
+		var fourSquareUrl = baseURL + "" + venueID + "?v=" + version + "&client_id=" + clientID + "&client_secret=" + clientSecret;
+		console.log(fourSquareUrl);
+	}
+	getFourSquareData();
+
+	//Grabs place details and places into an info window above the marker
 	function showInfoWindow(marker, infowindow) {
+		var service = new google.maps.places.PlacesService(map);
+		service.getDetails({
+			placeId: marker.id
+		})
+		
 		if (infowindow.marker != marker) {
 			infowindow.setContent(marker.title);
 			infowindow.marker = marker;
@@ -164,3 +184,14 @@ function initMap() {
 	}
 
 } // End of  initMap Function
+
+
+
+
+
+
+
+
+
+
+
