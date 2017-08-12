@@ -210,14 +210,16 @@ function initMap() {
 	//Loop Through The Array Of Places and use the object properties to create markers on the map
 	for (var i = 0; i < places.length; i++) {
 		var location = places[i].location;
-		var title = places[i].title
-		var id = places[i].id
-
+		var title = places[i].title;
+		var id = places[i].id;
+		var fourSquareURL = "";
+		
 		var marker = new google.maps.Marker({
 			map: map,
 			position: location,
 			title: title,
-			id: id
+			id: id,
+			url: fourSquareURL
 		});
 		var largeInfoWindow = new google.maps.InfoWindow();
 		//Bind the marker to each of the locations in the side bar
@@ -238,30 +240,35 @@ function initMap() {
 
 	} //End of the markers loop
 
-	function getFourSquareData() {
+	function getFourSquareData(marker) {
 		var clientID = "O14P1ZP42RQEPCNZHR1PL2GTZAIWL3QT3BZMMVL21CJFVGRA";
 		var clientSecret = "C0D31BCWQ321L1TRV3DTSXYN43B1IJHWVFS4FEPKTXMEWBFL";
 		var baseURL = "https://api.foursquare.com/v2/venues/"
 		var date = new Date();
 		var version = date.getTime();
 		
-		
-		
-		for (var i = 0; i < places.length; i++){
-		var venueID = markers[i].id
-		var fourSquareUrl = baseURL + "" + venueID + "?v=" + version + "&client_id=" + clientID + "&client_secret=" + clientSecret;
-		console.log(fourSquareUrl);
+		var venueID = marker.id
+		marker.fourSquareUrl = baseURL + "" + venueID + "?v=" + version + "&client_id=" + clientID + "&client_secret=" + clientSecret;
+// 		console.log(marker.title);	
+// 		console.log(marker.id);	
+// 		console.log(marker.fourSquareUrl);
+		var fsaddress = "";
+		$.getJSON(marker.fourSquareUrl).done(function(data){
+			fsaddress = data.response.venue.location.address;
+			console.log(fsaddress);
+		}).fail(function(){
+			alert("API DID NOT LOAD");
+		});
 			
-			
+			return fsaddress
 		}
 
-	}
-	getFourSquareData();
+	
 
 	//Grabs place details and places into an info window above the marker
 	function showInfoWindow(marker, infowindow) {
 		if (infowindow.marker != marker) {
-			infowindow.setContent(marker.title);
+			infowindow.setContent(marker.title + "<br><Address: " + getFourSquareData(marker));
 			infowindow.marker = marker;
 			infowindow.open(map, marker);
 			infowindow.addListener('closeclick', function() {
