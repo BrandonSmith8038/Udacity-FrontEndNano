@@ -230,7 +230,6 @@ function initMap() {
 
 		//Event listener to animate the marker on click
 		marker.addListener('click', function() {
-			showInfoWindow(this, largeInfoWindow);
 			getFourSquareData(this,largeInfoWindow);
 			var self = this;
 			self.setAnimation(google.maps.Animation.BOUNCE);
@@ -253,13 +252,31 @@ function initMap() {
 // 		console.log(marker.title);	
 // 		console.log(marker.id);	
 // 		console.log(marker.fourSquareUrl);
-		var fsaddress = "";
+		
 		$.getJSON(marker.fourSquareUrl).done(function(json){
-			fsaddress = json.response.venue.location.address;
 			
-			var output = "<p>" + fsaddress + "</p>";
+			var fsAddress = json.response.venue.location.formattedAddress;
+			var fsPhone = json.response.venue.contact.formattedPhone;
+			var fsPrice = json.response.venue.price.tier;
+			var fsRating = json.response.venue.rating;
+			var fsDescription = json.response.venue.description;
+// 	 		var fsOpen = json.response.venue.hours.status;
+			
+			
+			
+			var output = "<strong class='infoTitle'>" + marker.title + "</strong>";  
+			output += "&nbsp <p><strong>Address:</strong> " + fsAddress + "</p>";
+			output += "<p><strong>Phone:</strong> " + fsPhone + "</p>";
+			output += "<p><strong>Price:</strong> " + fsPrice + "</p>";
+			output += "<p><strong>Rating:</strong> " + fsRating + "</p>";
+			if(fsDescription){
+				output += "<p><strong>Description:</strong> " + fsDescription + "</p>";
+			}
+// 			output += "<p><strong>Currently Open:</strong> " + fsOpen + "</p>";
+			
+			
+// 			console.log(fsOpen);
 			largeInfoWindow.setContent(output); largeInfoWindow.open(map, marker);
-			console.log(fsaddress);
 			
 			
 		}).fail(function(){
