@@ -253,22 +253,26 @@ function initMap() {
 // 		console.log(marker.id);	
 // 		console.log(marker.fourSquareUrl);
 		var fsaddress = "";
-		$.getJSON(marker.fourSquareUrl).done(function(data){
-			fsaddress = data.response.venue.location.address;
+		$.getJSON(marker.fourSquareUrl).done(function(json){
+			fsaddress = json.response.venue.location.address;
+			
+			var output = "<p>" + fsaddress + "</p>";
+			showInfoWindow(marker,largeInfoWindow,output);
 			console.log(fsaddress);
+			
+			
 		}).fail(function(){
 			alert("API DID NOT LOAD");
 		});
 			
-			return fsaddress
 		}
 
 	
 
 	//Grabs place details and places into an info window above the marker
-	function showInfoWindow(marker, infowindow) {
+	function showInfoWindow(marker, infowindow,content) {
 		if (infowindow.marker != marker) {
-			infowindow.setContent(marker.title + "<br><Address: " + getFourSquareData(marker));
+	 	infowindow.setContent(marker.title + "<br><p>Address: " + content + "</p>");
 			infowindow.marker = marker;
 			infowindow.open(map, marker);
 			infowindow.addListener('closeclick', function() {
