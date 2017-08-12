@@ -231,6 +231,7 @@ function initMap() {
 		//Event listener to animate the marker on click
 		marker.addListener('click', function() {
 			showInfoWindow(this, largeInfoWindow);
+			getFourSquareData(this,largeInfoWindow);
 			var self = this;
 			self.setAnimation(google.maps.Animation.BOUNCE);
 			setTimeout(function() {
@@ -257,7 +258,7 @@ function initMap() {
 			fsaddress = json.response.venue.location.address;
 			
 			var output = "<p>" + fsaddress + "</p>";
-			showInfoWindow(marker,largeInfoWindow,output);
+			largeInfoWindow.setContent(output); largeInfoWindow.open(map, marker);
 			console.log(fsaddress);
 			
 			
@@ -272,7 +273,7 @@ function initMap() {
 	//Grabs place details and places into an info window above the marker
 	function showInfoWindow(marker, infowindow,content) {
 		if (infowindow.marker != marker) {
-	 	infowindow.setContent(marker.title + "<br><p>Address: " + content + "</p>");
+	 	infowindow.setContent(marker.title + "<br><p>Address: " + getFourSquareData(marker) + "</p>");
 			infowindow.marker = marker;
 			infowindow.open(map, marker);
 			infowindow.addListener('closeclick', function() {
