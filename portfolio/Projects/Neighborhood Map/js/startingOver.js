@@ -211,11 +211,13 @@ function initMap() {
 	for (var i = 0; i < places.length; i++) {
 		var location = places[i].location;
 		var title = places[i].title
+		var id = places[i].id
 
 		var marker = new google.maps.Marker({
 			map: map,
 			position: location,
-			title: title
+			title: title,
+			id: id
 		});
 		var largeInfoWindow = new google.maps.InfoWindow();
 		//Bind the marker to each of the locations in the side bar
@@ -239,13 +241,20 @@ function initMap() {
 	function getFourSquareData() {
 		var clientID = "O14P1ZP42RQEPCNZHR1PL2GTZAIWL3QT3BZMMVL21CJFVGRA";
 		var clientSecret = "C0D31BCWQ321L1TRV3DTSXYN43B1IJHWVFS4FEPKTXMEWBFL";
-		var venueID = "4bc36ac9b492d13a25b8a860"
 		var baseURL = "https://api.foursquare.com/v2/venues/"
 		var date = new Date();
 		var version = date.getTime();
-
+		
+		
+		
+		for (var i = 0; i < places.length; i++){
+		var venueID = markers[i].id
 		var fourSquareUrl = baseURL + "" + venueID + "?v=" + version + "&client_id=" + clientID + "&client_secret=" + clientSecret;
 		console.log(fourSquareUrl);
+			
+			
+		}
+
 	}
 	getFourSquareData();
 
