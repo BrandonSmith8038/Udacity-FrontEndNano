@@ -86,78 +86,7 @@ var viewModel = function() {
 		showTheMenu(!showTheMenu());
 	}
 
-	self.myPlaces = ko.observableArray([{
-		title: 'Senor Taco',
-		location: {
-			lat: 33.452497,
-			lng: -112.391994
-		},
-		id: "4bc36ac9b492d13a25b8a860"
-	}, {
-		title: 'Longhorn Corral',
-		location: {
-			lat: 33.466377,
-			lng: -112.478517
-		},
-		id: "4bca48e2fb84c9b611e51c3e"
-	}, {
-		title: 'Roman\'s Oasis',
-		location: {
-			lat: 33.435431,
-			lng: -112.421409
-		},
-		id: "4c426d2daf052d7f6e087f79"
-	}, {
-		title: 'Wildflower Bread Company',
-		location: {
-			lat: 33.462247,
-			lng: -112.359319
-		},
-		id: "4ae0d10df964a520cd8221e3"
-	}, {
-		title: 'Yan\'s',
-		location: {
-			lat: 33.456911,
-			lng: -112.393888
-		},
-		id: "4bb3f51049bdc9b68b5d0c10"
-	}, {
-		title: 'Gus\'s New York Pizza & Bar',
-		location: {
-			lat: 33.465505,
-			lng: -112.356812
-		},
-		id: "4f361d24e4b0ea2d7c79602c"
-	}, {
-		title: 'Black Bear Diner',
-		location: {
-			lat: 33.456868,
-			lng: -112.341400
-		},
-		id: "5490aa2d498ecc0e320e07e7"
-	}, {
-		title: 'Sammy\'s Burger',
-		location: {
-			lat: 33.452322,
-			lng: -112.391574
-		},
-		id: "56c918d7cd101492d1cad6f2"
-	}, {
-		title: 'Sal\'s Tuscan Grill',
-		location: {
-			lat: 33.463317,
-			lng: -112.344915
-		},
-		id: "4c2ba22c77cfe21ed7cfb4f1"
-	}, {
-		title: 'Cracker Barrel Old Country Store',
-		location: {
-			lat: 33.459621,
-			lng: -112.357383
-		},
-		id: "4c320ee9213c2d7fe6cb345d"
-
-	}]);
+	self.myPlaces = ko.observableArray(places);
 
 	self.clickMarker = function(places) {
 
