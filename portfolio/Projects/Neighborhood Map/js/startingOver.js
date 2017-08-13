@@ -158,6 +158,7 @@ function initMap() {
 		//place the newely created marker into the global markers array
 		markers.push(marker);
 		
+		//Learned from https://stackoverflow.com/questions/3610135/google-maps-v3-api-extend-bounds-javascript-how-to
 		bounds.extend(new google.maps.LatLng(places[i].location));
 
 		//Event listener to animate the marker on click
@@ -171,7 +172,7 @@ function initMap() {
 		});
 
 	} //End of the markers loop
-		map.fitBounds(bounds);
+	
 
 	function getFourSquareData(marker) {
 		var clientID = "O14P1ZP42RQEPCNZHR1PL2GTZAIWL3QT3BZMMVL21CJFVGRA";
@@ -249,5 +250,21 @@ function initMap() {
 			})
 		}
 	}
+	
 
+//Responsiveness Help https://stackoverflow.com/questions/8792676/center-google-maps-v3-on-browser-resize-responsive	
+var center;
+function calculateCenter() {
+  center = map.getCenter();
+}
+google.maps.event.addDomListener(map, 'idle', function() {
+  calculateCenter();
+	map.fitBounds(bounds);
+
+});
+google.maps.event.addDomListener(window, 'resize', function() {
+  map.setCenter(center);
+	map.fitBounds(bounds);
+
+});
 } // End of  initMap Function
