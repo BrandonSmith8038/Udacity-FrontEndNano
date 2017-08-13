@@ -137,6 +137,7 @@ function initMap() {
 		disableDefaultUI: true
 	});
 	//Loop Through The Array Of Places and use the object properties to create markers on the map
+	var bounds = new google.maps.LatLngBounds();
 	for (var i = 0; i < places.length; i++) {
 		var location = places[i].location;
 		var title = places[i].title;
@@ -156,6 +157,8 @@ function initMap() {
 
 		//place the newely created marker into the global markers array
 		markers.push(marker);
+		
+		bounds.extend(new google.maps.LatLng(places[i].location));
 
 		//Event listener to animate the marker on click
 		marker.addListener('click', function() {
@@ -168,6 +171,7 @@ function initMap() {
 		});
 
 	} //End of the markers loop
+		map.fitBounds(bounds);
 
 	function getFourSquareData(marker) {
 		var clientID = "O14P1ZP42RQEPCNZHR1PL2GTZAIWL3QT3BZMMVL21CJFVGRA";
