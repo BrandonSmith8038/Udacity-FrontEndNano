@@ -17,181 +17,181 @@ var places = [{
 		lat: 33.466377,
 		lng: -112.478517
 	},
-		id: "4bca48e2fb84c9b611e51c3e"
+	id: "4bca48e2fb84c9b611e51c3e"
 }, {
 	title: 'Roman\'s Oasis',
 	location: {
 		lat: 33.435431,
 		lng: -112.421409
 	},
-		id: "4c426d2daf052d7f6e087f79"
+	id: "4c426d2daf052d7f6e087f79"
 }, {
 	title: 'Wildflower Bread Company',
 	location: {
 		lat: 33.462247,
 		lng: -112.359319
 	},
-		id: "4ae0d10df964a520cd8221e3"
+	id: "4ae0d10df964a520cd8221e3"
 }, {
 	title: 'Yan\'s',
 	location: {
 		lat: 33.456911,
 		lng: -112.393888
 	},
-		id: "4bb3f51049bdc9b68b5d0c10"
+	id: "4bb3f51049bdc9b68b5d0c10"
 }, {
 	title: 'Gus\'s New York Pizza & Bar',
 	location: {
 		lat: 33.465505,
 		lng: -112.356812
 	},
-		id: "4f361d24e4b0ea2d7c79602c"
+	id: "4f361d24e4b0ea2d7c79602c"
 }, {
 	title: 'Black Bear Diner',
 	location: {
 		lat: 33.456868,
 		lng: -112.341400
 	},
-		id: "5490aa2d498ecc0e320e07e7"
+	id: "5490aa2d498ecc0e320e07e7"
 }, {
 	title: 'Sammy\'s Burger',
 	location: {
 		lat: 33.452322,
 		lng: -112.391574
 	},
-		id: "56c918d7cd101492d1cad6f2"
+	id: "56c918d7cd101492d1cad6f2"
 }, {
 	title: 'Sal\'s Tuscan Grill',
 	location: {
 		lat: 33.463317,
 		lng: -112.344915
 	},
-		id: "4c2ba22c77cfe21ed7cfb4f1"
+	id: "4c2ba22c77cfe21ed7cfb4f1"
 }, {
 	title: 'Cracker Barrel Old Country Store',
 	location: {
 		lat: 33.459621,
 		lng: -112.357383
 	},
-		id: "4c320ee9213c2d7fe6cb345d"
+	id: "4c320ee9213c2d7fe6cb345d"
 
 
 }];
 
 var viewModel = function() {
-		var self = this;
+	var self = this;
 
-		//Show or Hide The Side Menu
-		self.showMenu = function() {
-			showTheMenu(!showTheMenu());
+	//Show or Hide The Side Menu
+	self.showMenu = function() {
+		showTheMenu(!showTheMenu());
+	}
+
+	self.myPlaces = ko.observableArray([{
+		title: 'Senor Taco',
+		location: {
+			lat: 33.452497,
+			lng: -112.391994
+		},
+		id: "4bc36ac9b492d13a25b8a860"
+	}, {
+		title: 'Longhorn Corral',
+		location: {
+			lat: 33.466377,
+			lng: -112.478517
+		},
+		id: "4bca48e2fb84c9b611e51c3e"
+	}, {
+		title: 'Roman\'s Oasis',
+		location: {
+			lat: 33.435431,
+			lng: -112.421409
+		},
+		id: "4c426d2daf052d7f6e087f79"
+	}, {
+		title: 'Wildflower Bread Company',
+		location: {
+			lat: 33.462247,
+			lng: -112.359319
+		},
+		id: "4ae0d10df964a520cd8221e3"
+	}, {
+		title: 'Yan\'s',
+		location: {
+			lat: 33.456911,
+			lng: -112.393888
+		},
+		id: "4bb3f51049bdc9b68b5d0c10"
+	}, {
+		title: 'Gus\'s New York Pizza & Bar',
+		location: {
+			lat: 33.465505,
+			lng: -112.356812
+		},
+		id: "4f361d24e4b0ea2d7c79602c"
+	}, {
+		title: 'Black Bear Diner',
+		location: {
+			lat: 33.456868,
+			lng: -112.341400
+		},
+		id: "5490aa2d498ecc0e320e07e7"
+	}, {
+		title: 'Sammy\'s Burger',
+		location: {
+			lat: 33.452322,
+			lng: -112.391574
+		},
+		id: "56c918d7cd101492d1cad6f2"
+	}, {
+		title: 'Sal\'s Tuscan Grill',
+		location: {
+			lat: 33.463317,
+			lng: -112.344915
+		},
+		id: "4c2ba22c77cfe21ed7cfb4f1"
+	}, {
+		title: 'Cracker Barrel Old Country Store',
+		location: {
+			lat: 33.459621,
+			lng: -112.357383
+		},
+		id: "4c320ee9213c2d7fe6cb345d"
+
+	}]);
+
+	self.clickMarker = function(places) {
+
+		google.maps.event.trigger(places.marker, 'click');
+
+	}
+
+	//ko.computed and ko.utils.arrayFilter learned from http://www.knockmeout.net/2011/04/utility-functions-in-knockoutjs.html
+
+	//Function to filter out the myPlaces() variable and the markers dependent on what is in the search box
+	self.filter = ko.observable('');
+	self.filteredLocations = ko.computed(function() {
+		var filter = self.filter().toLowerCase();
+		if (!filter) {
+			self.myPlaces().forEach(function(location) {
+				if (location.marker) {
+					location.marker.setVisible(true);
+				}
+			});
+			return self.myPlaces();
+		} else {
+			return ko.utils.arrayFilter(self.myPlaces(), function(location) {
+				if (location.title.toLowerCase().indexOf(filter) > -1) {
+					location.marker.setVisible(true);
+					return true
+				} else {
+					location.marker.setVisible(false)
+					return false
+				}
+			});
 		}
+	}, self);
 
-		self.myPlaces = ko.observableArray([{
-			title: 'Senor Taco',
-			location: {
-				lat: 33.452497,
-				lng: -112.391994
-			},
-			id: "4bc36ac9b492d13a25b8a860"
-		}, {
-			title: 'Longhorn Corral',
-			location: {
-				lat: 33.466377,
-				lng: -112.478517
-			},
-				id: "4bca48e2fb84c9b611e51c3e"
-		}, {
-			title: 'Roman\'s Oasis',
-			location: {
-				lat: 33.435431,
-				lng: -112.421409
-			},
-				id: "4c426d2daf052d7f6e087f79"
-		}, {
-			title: 'Wildflower Bread Company',
-			location: {
-				lat: 33.462247,
-				lng: -112.359319
-			},
-				id: "4ae0d10df964a520cd8221e3"
-		}, {
-			title: 'Yan\'s',
-			location: {
-				lat: 33.456911,
-				lng: -112.393888
-			},
-				id: "4bb3f51049bdc9b68b5d0c10"
-		}, {
-			title: 'Gus\'s New York Pizza & Bar',
-			location: {
-				lat: 33.465505,
-				lng: -112.356812
-			},
-				id: "4f361d24e4b0ea2d7c79602c"
-		}, {
-			title: 'Black Bear Diner',
-			location: {
-				lat: 33.456868,
-				lng: -112.341400
-			},
-				id: "5490aa2d498ecc0e320e07e7"
-		}, {
-			title: 'Sammy\'s Burger',
-			location: {
-				lat: 33.452322,
-				lng: -112.391574
-			},
-				id: "56c918d7cd101492d1cad6f2"
-		}, {
-			title: 'Sal\'s Tuscan Grill',
-			location: {
-				lat: 33.463317,
-				lng: -112.344915
-			},
-				id: "4c2ba22c77cfe21ed7cfb4f1"
-		}, {
-			title: 'Cracker Barrel Old Country Store',
-			location: {
-				lat: 33.459621,
-				lng: -112.357383
-			},
-				id: "4c320ee9213c2d7fe6cb345d"
-
-		}]);
-
-		self.clickMarker = function(places) {
-
-			google.maps.event.trigger(places.marker, 'click');
-
-		}
-
-		//ko.computed and ko.utils.arrayFilter learned from http://www.knockmeout.net/2011/04/utility-functions-in-knockoutjs.html
-
-		//Function to filter out the myPlaces() variable and the markers dependent on what is in the search box
-		self.filter = ko.observable('');
-		self.filteredLocations = ko.computed(function() {
-			var filter = self.filter().toLowerCase();
-			if (!filter) {
-				self.myPlaces().forEach(function(location) {
-					if (location.marker) {
-						location.marker.setVisible(true);
-					}
-				});
-				return self.myPlaces();
-			} else {
-				return ko.utils.arrayFilter(self.myPlaces(), function(location) {
-					if (location.title.toLowerCase().indexOf(filter) > -1) {
-						location.marker.setVisible(true);
-						return true
-					} else {
-						location.marker.setVisible(false)
-						return false
-					}
-				});
-			}
-		}, self);
-
-	} //End Of View Model
+} //End Of View Model
 var vm = new viewModel();
 ko.applyBindings(vm);
 
@@ -213,7 +213,7 @@ function initMap() {
 		var title = places[i].title;
 		var id = places[i].id;
 		var fourSquareURL = "";
-		
+
 		var marker = new google.maps.Marker({
 			map: map,
 			position: location,
@@ -230,7 +230,7 @@ function initMap() {
 
 		//Event listener to animate the marker on click
 		marker.addListener('click', function() {
-			getFourSquareData(this,largeInfoWindow);
+			getFourSquareData(this, largeInfoWindow);
 			var self = this;
 			self.setAnimation(google.maps.Animation.BOUNCE);
 			setTimeout(function() {
@@ -246,51 +246,69 @@ function initMap() {
 		var baseURL = "https://api.foursquare.com/v2/venues/"
 		var date = new Date();
 		var version = date.getTime();
-		
+
 		var venueID = marker.id
 		marker.fourSquareUrl = baseURL + "" + venueID + "?v=" + version + "&client_id=" + clientID + "&client_secret=" + clientSecret;
-// 		console.log(marker.title);	
-// 		console.log(marker.id);	
-// 		console.log(marker.fourSquareUrl);
-		
-		$.getJSON(marker.fourSquareUrl).done(function(json){
-			
+		// 		console.log(marker.title);	
+		// 		console.log(marker.id);	
+		// 		console.log(marker.fourSquareUrl);
+
+		$.getJSON(marker.fourSquareUrl).done(function(json) {
+			//Needed to declare this variable ahead of time so that it is not declared in the if statment below
+			var fsOpen = "";
 			var fsAddress = json.response.venue.location.formattedAddress;
 			var fsPhone = json.response.venue.contact.formattedPhone;
-			var fsPrice = json.response.venue.price.tier;
+			var fsPrice = json.response.venue.price.currency;
 			var fsRating = json.response.venue.rating;
 			var fsDescription = json.response.venue.description;
-// 	 		var fsOpen = json.response.venue.hours.status;
-			
-			
-			
-			var output = "<strong class='infoTitle'>" + marker.title + "</strong>";  
-			output += "&nbsp <p><strong>Address:</strong> " + fsAddress + "</p>";
-			output += "<p><strong>Phone:</strong> " + fsPhone + "</p>";
-			output += "<p><strong>Price:</strong> " + fsPrice + "</p>";
-			output += "<p><strong>Rating:</strong> " + fsRating + "</p>";
-			if(fsDescription){
+			//Needs an extra check here, for some reason the api call for different venues did not always have the hours.status property
+			if (json.response.venue.hasOwnProperty('hours')) {
+				fsOpen = json.response.venue.hours.status;
+			}
+
+			var output = "<div class='info-text'><strong class='infoTitle'>" + marker.title + "</strong>";
+
+			if (fsAddress) {
+				output += "&nbsp <p><strong>Address:</strong> " + fsAddress + "</p>";
+				console.log(json.response.venue);
+			}
+			if (fsPhone) {
+				output += "<p><strong>Phone:</strong> " + fsPhone + "</p>";
+			}
+			if (fsPrice) {
+				output += "<p><strong>Price:</strong> " + fsPrice + "</p>";
+			}
+			if (fsRating) {
+				output += "<p><strong>Rating:</strong> " + fsRating + "</p>";
+			}
+			if (fsDescription) {
 				output += "<p><strong>Description:</strong> " + fsDescription + "</p>";
 			}
-// 			output += "<p><strong>Currently Open:</strong> " + fsOpen + "</p>";
-			
-			
-// 			console.log(fsOpen);
-			largeInfoWindow.setContent(output); largeInfoWindow.open(map, marker);
-			
-			
-		}).fail(function(){
-			alert("API DID NOT LOAD");
-		});
-			
-		}
+			if (fsOpen) {
+				if (fsOpen.indexOf('Closed') >= 0) {
+					output += "<p><strong>Status: </strong><span class='closed'>" + fsOpen + "</span></p>";
+				} else {
+					output += "<p><strong>Status: </strong><span class='open'>" + fsOpen + "</span></p></div>";
+				}
+			}
 
-	
+
+			largeInfoWindow.setContent(output);
+			largeInfoWindow.open(map, marker);
+
+
+		}).fail(function() {
+			alert("I'M SORRY THERE SEEMS TO BE AN ISSUE CONNECTING TO FOURSQUARE");
+		});
+
+	}
+
+
 
 	//Grabs place details and places into an info window above the marker
-	function showInfoWindow(marker, infowindow,content) {
+	function showInfoWindow(marker, infowindow, content) {
 		if (infowindow.marker != marker) {
-	 	infowindow.setContent(marker.title + "<br><p>Address: " + getFourSquareData(marker) + "</p>");
+			infowindow.setContent(marker.title + "<br><p>Address: " + getFourSquareData(marker) + "</p>");
 			infowindow.marker = marker;
 			infowindow.open(map, marker);
 			infowindow.addListener('closeclick', function() {

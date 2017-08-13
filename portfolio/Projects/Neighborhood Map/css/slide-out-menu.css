@@ -47,7 +47,8 @@ input#search-place {
 	color: black;
 	width: 100%;
 	border: 3px solid #ccc;
-	border-radius: 2px;
+	border-left: none;
+	border-radius: 2px 2px 2px 0;
 	height: 37px;
 	background-color: #DCDCDC;
 	font-family: 'Bree Serif', serif;
@@ -59,7 +60,14 @@ input#search-place {
 input#search-place:focus {
     border: 3px solid #555;
 }
-
+/* .input-group span {
+	color: black;
+	border: 3px solid #ccc;
+	border-right: none;
+	border-radius: 2px 0 2px 2px;
+	height: 37px;
+	background-color: #DCDCDC;
+} */
 #search-form {
 	padding-left: 10px;
 	padding-right: 10px;
@@ -70,3 +78,4 @@ input#search-place:focus {
 	margin: auto;
 	max-height 100px;
 }
+

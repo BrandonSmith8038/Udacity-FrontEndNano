@@ -3,13 +3,19 @@
 }
 
 #menu-toggle {
-    background-color: #2c3e50;
-    border-color: rgba(0,0,0,0);
-    color: white;
-    font-size: 16px;
-    position: absolute;
-    transition: 0.5s;
-    z-index: 1;
+	background-color: #2c3e50;
+	border-color: rgba(0, 0, 0, 0);
+	color: white;
+	font-size: 16px;
+	position: absolute;
+	transition: 0.5s ease-in-out;
+	z-index: 1;
+	outline: none;
+}
+
+#menu-toggle:hover {
+	background-color: white;
+	color: #2c3e50;
 }
 
 .menu-displayed {
@@ -18,5 +24,18 @@
 
 .infoTitle {
 	font-size: 16px;
-	padding-bottom: 10px;
+	margin-bottom: 18px;
+	font-family: 'Gloria Hallelujah', cursive;
+}
+
+.info-text {
+	font-family: 'Bree Serif', serif;
+}
+
+.closed {
+	color: #F44336;
+}
+
+.open {
+	color: #4CAF50;
 }
