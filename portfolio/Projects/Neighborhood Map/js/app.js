@@ -14,7 +14,7 @@ var viewModel = function() {
     var self = this;
 
     //Variable used to toggle the slide out menu
-    self.showTheMenu = ko.observable(true);
+    self.showTheMenu = ko.observable(false);
 
     //variables to store the marker locations as well as the li's in the slide out menu
 

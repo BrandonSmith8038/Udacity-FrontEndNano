@@ -18,21 +18,23 @@
 }
 
 h1.neighborhood-title {
-	font-size: 45px;
+	font-size: 35px;
 	padding: 5px;
+	margin: 0;
 	font-family: 'Gloria Hallelujah', cursive;
-	line-height: 55px;
+	line-height: 40px;
 }
 
 ul.sidebar-nav {
 	font-size: 20px;
 	list-style: none;
 	padding: 15px;
+	padding: 2px;
 }
 
 ul.sidebar-nav li {
-	padding-bottom: 10px;
-	padding-top: 10px;
+	padding-bottom: 5px;
+	padding-top: 5px;
 	text-align: center;
 	border-top: 1px solid white;
 	cursor: pointer;
@@ -41,6 +43,7 @@ ul.sidebar-nav li {
 
 ul.sidebar-nav li:first-of-type {
 	border: none;
+	padding-top: 2px;
 }
 
 input#search-place {
@@ -60,14 +63,7 @@ input#search-place {
 input#search-place:focus {
     border: 3px solid #555;
 }
-/* .input-group span {
-	color: black;
-	border: 3px solid #ccc;
-	border-right: none;
-	border-radius: 2px 0 2px 2px;
-	height: 37px;
-	background-color: #DCDCDC;
-} */
+
 #search-form {
 	padding-left: 10px;
 	padding-right: 10px;
@@ -76,6 +72,6 @@ input#search-place:focus {
 .city-logo img {
 	display: block;
 	margin: auto;
-	max-height 100px;
+	max-width: 100px;
 }
 
