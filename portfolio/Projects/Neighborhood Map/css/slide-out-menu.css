@@ -18,11 +18,11 @@
 }
 
 h1.neighborhood-title {
-	font-size: 35px;
-	padding: 5px;
-	margin: 0;
 	font-family: 'Gloria Hallelujah', cursive;
+	font-size: 35px;
 	line-height: 40px;
+	margin: 0;
+	padding: 5px;
 }
 
 ul.sidebar-nav {
@@ -33,12 +33,12 @@ ul.sidebar-nav {
 }
 
 ul.sidebar-nav li {
-	padding-bottom: 5px;
-	padding-top: 5px;
-	text-align: center;
 	border-top: 1px solid white;
 	cursor: pointer;
 	font-family: 'Bree Serif', serif;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	text-align: center;
 }
 
 ul.sidebar-nav li:first-of-type {
@@ -47,17 +47,17 @@ ul.sidebar-nav li:first-of-type {
 }
 
 input#search-place {
-	color: black;
-	width: 100%;
-	border: 3px solid #ccc;
+	background-color: #DCDCDC;
 	border-left: none;
 	border-radius: 2px 2px 2px 0;
-	height: 37px;
-	background-color: #DCDCDC;
+	border: 3px solid #ccc;
+	color: black;
 	font-family: 'Bree Serif', serif;
-	text-transform: uppercase;
+	height: 37px;
 	outline: #fff;
+	text-transform: uppercase;
 	transition: 0.3s
+	width: 100%;
 }
 
 input#search-place:focus {
@@ -73,5 +73,11 @@ input#search-place:focus {
 	display: block;
 	margin: auto;
 	max-width: 100px;
+}
+
+#fourSquare {
+	bottom: 0;
+	font-size: 10px;
+	margin-bottom: 60px;
 }
 

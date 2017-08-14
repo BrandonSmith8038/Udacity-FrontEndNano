@@ -27,6 +27,9 @@
         <ul class="sidebar-nav" data-bind="foreach: filteredLocations">
           <li data-bind="text: title, click: $parent.clickMarker"></li>
         </ul>
+        <div id="fourSquare" class="text-center">
+          <p>Location information provided by FourSquare</p>
+        </div>
       </div>
     </div>
     <div id="page-content-wrapper" data-bind="style: {'padding-left': showTheMenu() ? '250px' : '0'}">

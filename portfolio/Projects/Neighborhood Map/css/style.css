@@ -1,7 +1,7 @@
 #map {
 	height: 100vh;
-	width: 100%;
 	position: relative;
+	width: 100%;
 }
 
 #menu-toggle {
@@ -9,10 +9,10 @@
 	border-color: rgba(0, 0, 0, 0);
 	color: white;
 	font-size: 16px;
+	outline: none;
 	position: absolute;
 	transition: 0.5s ease-in-out;
 	z-index: 1;
-	outline: none;
 }
 
 #menu-toggle:hover {
@@ -25,9 +25,9 @@
 }
 
 .infoTitle {
+	font-family: 'Gloria Hallelujah', cursive;
 	font-size: 16px;
 	margin-bottom: 18px;
-	font-family: 'Gloria Hallelujah', cursive;
 }
 
 .info-text {
