@@ -232,7 +232,7 @@ function initMap() {
 
 
 		}).fail(function() {
-			alert("I'M SORRY THERE SEEMS TO BE AN ISSUE CONNECTING TO FOURSQUARE");
+			alert("We apologize, there seems to be an issue connection to FourSquare, please try again later.");
 		});
 
 	}
@@ -256,15 +256,19 @@ function initMap() {
 var center;
 function calculateCenter() {
   center = map.getCenter();
-}
-google.maps.event.addDomListener(map, 'idle', function() {
-  calculateCenter();
-	map.fitBounds(bounds);
+	}
+	google.maps.event.addDomListener(map, 'idle', function() {
+	  calculateCenter();
+		map.fitBounds(bounds);
 
-});
-google.maps.event.addDomListener(window, 'resize', function() {
-  map.setCenter(center);
-	map.fitBounds(bounds);
+	});
+	google.maps.event.addDomListener(window, 'resize', function() {
+	  map.setCenter(center);
+		map.fitBounds(bounds);
 
-});
+	});
+
 } // End of  initMap Function
+function gm_authFailure() { 
+	alert("We Apologize, there was an error loading the map. Please try again later");
+};
