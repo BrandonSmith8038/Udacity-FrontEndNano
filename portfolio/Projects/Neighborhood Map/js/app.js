@@ -1,5 +1,5 @@
 //Initialize Some Global Variables To Be Used Later
-var showTheMenu = ko.observable(true);
+var showTheMenu = ko.observable(false);
 var map;
 var markers = [];
 
