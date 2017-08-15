@@ -84,7 +84,7 @@ var viewModel = function() {
 	//Show or Hide The Side Menu
 	self.showMenu = function() {
 		showTheMenu(!showTheMenu());
-	}
+	};
 
 	self.myPlaces = ko.observableArray(places);
 
@@ -92,7 +92,7 @@ var viewModel = function() {
 
 		google.maps.event.trigger(places.marker, 'click');
 
-	}
+	};
 
 	//ko.computed and ko.utils.arrayFilter learned from http://www.knockmeout.net/2011/04/utility-functions-in-knockoutjs.html
 
@@ -111,16 +111,16 @@ var viewModel = function() {
 			return ko.utils.arrayFilter(self.myPlaces(), function(location) {
 				if (location.title.toLowerCase().indexOf(filter) > -1) {
 					location.marker.setVisible(true);
-					return true
+					return true;
 				} else {
-					location.marker.setVisible(false)
-					return false
+					location.marker.setVisible(false);
+					return false;
 				}
 			});
 		}
 	}, self);
 
-} //End Of View Model
+}; //End Of View Model
 var vm = new viewModel();
 ko.applyBindings(vm);
 
@@ -161,6 +161,12 @@ function initMap() {
 		//Learned from https://stackoverflow.com/questions/3610135/google-maps-v3-api-extend-bounds-javascript-how-to
 		bounds.extend(new google.maps.LatLng(places[i].location));
 
+		onClick(markers[i]);
+
+	} //End of the markers loop
+	
+
+	function onClick(marker){
 		//Event listener to animate the marker on click
 		marker.addListener('click', function() {
 			getFourSquareData(this, largeInfoWindow);
@@ -170,18 +176,16 @@ function initMap() {
 				self.setAnimation(null);
 			}, 2400);
 		});
-
-	} //End of the markers loop
-	
+	}
 
 	function getFourSquareData(marker) {
 		var clientID = "O14P1ZP42RQEPCNZHR1PL2GTZAIWL3QT3BZMMVL21CJFVGRA";
 		var clientSecret = "C0D31BCWQ321L1TRV3DTSXYN43B1IJHWVFS4FEPKTXMEWBFL";
-		var baseURL = "https://api.foursquare.com/v2/venues/"
+		var baseURL = "https://api.foursquare.com/v2/venues/";
 		var date = new Date();
 		var version = date.getTime();
 
-		var venueID = marker.id
+		var venueID = marker.id;
 		marker.fourSquareUrl = baseURL + "" + venueID + "?v=" + version + "&client_id=" + clientID + "&client_secret=" + clientSecret;
 		// 		console.log(marker.title);	
 		// 		console.log(marker.id);	
@@ -204,7 +208,7 @@ function initMap() {
 
 			if (fsAddress) {
 				output += "&nbsp <p><strong>Address:</strong> " + fsAddress + "</p>";
-				console.log(json.response.venue);
+				//console.log(json.response.venue);
 			}
 			if (fsPhone) {
 				output += "<p><strong>Phone:</strong> " + fsPhone + "</p>";
@@ -247,7 +251,7 @@ function initMap() {
 			infowindow.open(map, marker);
 			infowindow.addListener('closeclick', function() {
 				marker.setAnimation(null);
-			})
+			});
 		}
 	}
 	
@@ -271,4 +275,4 @@ function calculateCenter() {
 } // End of  initMap Function
 function gm_authFailure() { 
 	alert("We Apologize, there was an error loading the map. Please try again later");
-};
+}
