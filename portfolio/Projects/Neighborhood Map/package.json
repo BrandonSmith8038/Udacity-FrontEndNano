@@ -1,0 +1,21 @@
+{
+  "name": "neighborhood-map",
+  "version": "1.0.0",
+  "description": "Neighborhood Map Project for the Udacity Front End Nano Degree Program",
+  "main": "index.html",
+  "dependencies": {
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {
+    "bower": "^1.8.0",
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BrandonSmith8038/Udacity-FrontEndNano/tree/master/portfolio/Projects/Neighborhood%20Map"
+  },
+  "author": "Brandon Smith",
+  "license": "ISC"
+}
