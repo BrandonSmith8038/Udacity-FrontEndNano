@@ -23,7 +23,10 @@ Enemy.prototype.update = function(dt) {
   if(this.x > 430){
     this.x = -300;
   }
+    
+    colosionDetection(this);
   
+
 
 };
 
@@ -58,7 +61,7 @@ Player.prototype.render = function() {
 //Empty array to eventually hold the enemies. 
 var allEnemies = [];
 //Number of enemies to display-Will eventually depend on the level number
-var enemyAmount = 15
+var enemyAmount = 3
 //X-axis Starting Position of Enemey
 var enemyStartX = -200
 
@@ -70,9 +73,9 @@ for(var i=0;i < enemyAmount;i++){
   //Y-axis Starting position for enemey
   var enemyStartY = Math.random() * (218-53) + 53;
   //Enemy Speed
-  var enemySpeed = Math.random() * 256;
+  var enemySpeed = Math.random() * (300-100) + 100;
   //Create the new player
-  allEnemies[i]=new Enemy(enemyStartX, enemyStartY, enemyStartY );
+  allEnemies[i]=new Enemy(enemyStartX, enemyStartY, enemySpeed );
 }
 
 
@@ -94,18 +97,28 @@ Player.prototype.handleInput = function(key){
 
 }
 
- //Checks if player has reached the top of the screen and resets to the bottom
- //Checks if player is touching the side of the screen and stops movement.
 
 Player.prototype.update = function() {
     //Needed for engine.js
 }
  
 
+
+function colosionDetection(theEnemy){
+  if ( player.y + 73 <= theEnemy.y + 135  && player.x + 25 <= theEnemy.x + 88 &&  player.y + 131 >= theEnemy.y + 90 && player.x + 76 >= theEnemy.x + 11){
+    //Reset player position if collis  
+    player.y = 383
+  }
+  console.log("Player X: ", player.x);
+  console.log("Enemy X: ", theEnemy.x);
+}
+
+ //Checks if player has reached the top of the screen and resets to the bottom
+ //Checks if player is touching the side of the screen and stops movement.
 //Resets the player if they reach the top of the screen back to the bottom
 //Stops player movement if the reach the bottom,left or right side of the screen
-function playerReset(x,y){
-     console.log("Y Postistion",player.y);
+function playerReset(){
+//      console.log("Y Postistion",player.y);
 //   console.log("X Posistion",player.x);
   if(player.y < -5){
     player.y = 383;
