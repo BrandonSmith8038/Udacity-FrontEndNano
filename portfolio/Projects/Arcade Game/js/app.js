@@ -18,6 +18,13 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
   this.x += dt * this.speed;
+ 
+  
+  if(this.x > 430){
+    this.x = -300;
+  }
+  
+
 };
 
 // Draw the enemy on the screen, required method for game
@@ -48,10 +55,28 @@ Player.prototype.render = function() {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
+//Empty array to eventually hold the enemies. 
 var allEnemies = [];
+//Number of enemies to display-Will eventually depend on the level number
+var enemyAmount = 15
+//X-axis Starting Position of Enemey
+var enemyStartX = -200
+
 var player = new Player(202.5,383,75)
+//Creates a new enemy
 
 
+for(var i=0;i < enemyAmount;i++){
+  //Y-axis Starting position for enemey
+  var enemyStartY = Math.random() * (218-53) + 53;
+  //Enemy Speed
+  var enemySpeed = Math.random() * 256;
+  //Create the new player
+  allEnemies[i]=new Enemy(enemyStartX, enemyStartY, enemyStartY );
+}
+
+
+//Handles keypresses for the player
 Player.prototype.handleInput = function(key){
   if (key == 'left') {
         player.x -= player.speed;
@@ -66,6 +91,7 @@ Player.prototype.handleInput = function(key){
         player.y += player.speed - 20;
     }
   playerReset();
+
 }
 
  //Checks if player has reached the top of the screen and resets to the bottom
@@ -76,10 +102,11 @@ Player.prototype.update = function() {
 }
  
 
+//Resets the player if they reach the top of the screen back to the bottom
+//Stops player movement if the reach the bottom,left or right side of the screen
 function playerReset(x,y){
-  console.log("Y Postistion",player.y);
-  console.log("X Posistion",player.x);
-  console.log("Player Speed",player.speed)
+     console.log("Y Postistion",player.y);
+//   console.log("X Posistion",player.x);
   if(player.y < -5){
     player.y = 383;
   }
