@@ -65,21 +65,33 @@ Player.prototype.handleInput = function(key){
     if (key == 'down') {
         player.y += player.speed - 20;
     }
-  reset();
+  playerReset();
 }
 
  //Checks if player has reached the top of the screen and resets to the bottom
  //Checks if player is touching the side of the screen and stops movement.
- function reset(x,y){
+
+Player.prototype.update = function() {
+    //Needed for engine.js
+}
+ 
+
+function playerReset(x,y){
   console.log("Y Postistion",player.y);
   console.log("X Posistion",player.x);
+  console.log("Player Speed",player.speed)
   if(player.y < -5){
     player.y = 383;
   }
-}
-
-Player.prototype.update = function() {
-    // function not needed right now
+  if(player.y > 430){
+    player.y = 430;
+  }
+  if(player.x < -22.5) {
+    player.x = -22.5
+  }
+  if (player.x > 420) {
+    player.x = 420
+  }
 }
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
