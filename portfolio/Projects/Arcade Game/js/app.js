@@ -64,7 +64,7 @@ Player.prototype.render = function() {
 };
 
 
-var Heart = function (x,y){
+var Heart = function(x, y) {
   this.x = x;
   this.y = y;
   this.sprite = 'images/Heart.png';
@@ -76,22 +76,26 @@ Heart.prototype.render = function() {
 
 
 
+//Creates random positioning for the heart
+var heartY = Math.random() * (300 - 50) + 50;
+var heartX = Math.random() * (500 - 20) + 20;
+//Creates a random number between 1 and 3 that determines if the heart if the heart will be shown
+var showHeart = Math.random() * (4 - 1) + 1;
+//Creates a new heart however the render function in engine.js will only if showHeart === 1
+var heart = new Heart(heartX, heartY)
+
+
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 var allEnemies = [];
 //Number of enemies to display-Will eventually depend on the level number
-var enemyAmount = 5  + level;
+var enemyAmount = 5 + level;
 //X-axis Starting Position of Enemey
 var enemyStartX = -200;
 
 var player = new Player(202.5, 650, 75);
-
-
-var heartY = Math.random() * (300 - 50) + 50;
-var heartX = Math.random() * (500 - 20) + 20;
-
-var heart = new Heart(heartX,heartY) 
 
 
 //Creates new enemys
@@ -127,7 +131,6 @@ Player.prototype.handleInput = function(key) {
 Player.prototype.update = function() {
   //Needed for engine.js
 }
-
 
 
 
@@ -189,8 +192,8 @@ function colosionDetection(theEnemy) {
 //Resets the player if they reach the top of the screen back to the bottom
 //Stops player movement if the reach the bottom,left or right side of the screen
 function playerReset() {
-        console.log("Y Postistion",player.y);
-        console.log("X Posistion",player.x);
+  console.log("Y Postistion", player.y);
+  console.log("X Posistion", player.x);
   if (player.y < -1) {
     player.y = 650;
     levelUp();
