@@ -64,6 +64,17 @@ Player.prototype.render = function() {
 };
 
 
+var Heart = function (x,y){
+  this.x = x;
+  this.y = y;
+  this.sprite = 'images/Heart.png';
+}
+
+Heart.prototype.render = function() {
+  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
@@ -75,9 +86,15 @@ var enemyAmount = 5  + level;
 var enemyStartX = -200;
 
 var player = new Player(202.5, 650, 75);
-//Creates a new enemy
 
 
+var heartY = Math.random() * (300 - 50) + 50;
+var heartX = Math.random() * (500 - 20) + 20;
+
+var heart = new Heart(heartX,heartY) 
+
+
+//Creates new enemys
 for (var i = 0; i < enemyAmount; i++) {
   //Y-axis Starting position for enemey
   var enemyStartY = Math.random() * (435 - 45) + 45;
@@ -86,7 +103,6 @@ for (var i = 0; i < enemyAmount; i++) {
   //Create the new player
   allEnemies[i] = new Enemy(enemyStartX, enemyStartY, enemySpeed);
 }
-
 
 //Handles keypresses for the player
 Player.prototype.handleInput = function(key) {
@@ -107,9 +123,15 @@ Player.prototype.handleInput = function(key) {
 }
 
 
+
 Player.prototype.update = function() {
   //Needed for engine.js
 }
+
+
+
+
+
 
 function levelUp() {
   level = level + 1;
@@ -183,6 +205,9 @@ function playerReset() {
     player.x = 725
   }
 }
+
+
+
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
