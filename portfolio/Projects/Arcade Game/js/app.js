@@ -2,6 +2,12 @@ var level = 1;
 var levelDisplay = document.getElementById("level");
 levelDisplay.innerHTML = "Level " + level;
 
+livesAmount = 5
+lifeText = "&#9825&#9825&#9825&#9825&#9825";
+var lifeDisplay = document.getElementById("lives");
+lifeDisplay.innerHTML = lifeText;
+
+
 // Enemies our player must avoid
 var Enemy = function(x, y, speed) {
   // Variables applied to each of our instances go here,
@@ -131,13 +137,30 @@ function levelUp() {
   }
 }
 
+function lifetracker() {
+  livesAmount = livesAmount - 1;
+  if (livesAmount === 4) {
+    lifeText = "&#9825&#9825&#9825&#9825";
+  } else if (livesAmount === 3) {
+    lifeText = "&#9825&#9825&#9825";
+  } else if (livesAmount === 2) {
+    lifeText = "&#9825&#9825";
+  } else if (livesAmount === 1) {
+    lifeText = "&#9825";
+  } else if (livesAmount < 1) {
+    document.body.innerHTML = "Loser"
+
+  }
+
+  lifeDisplay.innerHTML = lifeText;
+}
+
 function colosionDetection(theEnemy) {
   if (player.y + 73 <= theEnemy.y + 135 && player.x + 25 <= theEnemy.x + 88 && player.y + 131 >= theEnemy.y + 90 && player.x + 76 >= theEnemy.x + 11) {
     //Reset player position if collis  
     player.y = 383
+    lifetracker()
   }
-  //console.log("Player y: ", player.y);
-  //   console.log("Enemy X: ", theEnemy.x);
 }
 
 //Checks if player has reached the top of the screen and resets to the bottom
