@@ -29,9 +29,9 @@ Enemy.prototype.update = function(dt) {
   // all computers.
   this.x += dt * this.speed;
 
-
-  if (this.x > 430) {
-    this.x = -300;
+  //If the empty gets to the end of the playable area, loop back to the begining.
+  if (this.x > 725) {
+    this.x = -100;
   }
 
   colosionDetection(this);
@@ -68,20 +68,19 @@ Player.prototype.render = function() {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-//Empty array to eventually hold the enemies. 
 var allEnemies = [];
 //Number of enemies to display-Will eventually depend on the level number
-var enemyAmount = 3 * level;
+var enemyAmount = 5  + level;
 //X-axis Starting Position of Enemey
 var enemyStartX = -200;
 
-var player = new Player(202.5, 383, 75);
+var player = new Player(202.5, 650, 75);
 //Creates a new enemy
 
 
 for (var i = 0; i < enemyAmount; i++) {
   //Y-axis Starting position for enemey
-  var enemyStartY = Math.random() * (218 - 53) + 53;
+  var enemyStartY = Math.random() * (435 - 45) + 45;
   //Enemy Speed
   var enemySpeed = Math.random() * (300 - 100) + 100;
   //Create the new player
@@ -116,7 +115,7 @@ function levelUp() {
   level = level + 1;
   levelDisplay.innerHTML = "Level " + level;
 
-  enemyAmount = 3 + level;
+  enemyAmount = 4 + level;
   //X-axis Starting Position of Enemey
   enemyStartX = -200;
 
@@ -125,14 +124,14 @@ function levelUp() {
 
   for (var i = 0; i < enemyAmount; i++) {
     //Y-axis Starting position for enemey
-    var enemyStartY = Math.random() * (218 - 53) + 53;
+    var enemyStartY = Math.random() * (435 - 45) + 45;
     //Enemy Speed
     var enemySpeed = Math.random() * (300 - 100) + 100;
     //Creates New Enemys based on the enemy amount 
     allEnemies[i] = new Enemy(enemyStartX, enemyStartY, enemySpeed);
   }
 
-  if (level === 10) {
+  if (level === 11) {
     document.body.innerHTML = "WINNER"
   }
 }
@@ -158,7 +157,7 @@ function lifetracker() {
 function colosionDetection(theEnemy) {
   if (player.y + 73 <= theEnemy.y + 135 && player.x + 25 <= theEnemy.x + 88 && player.y + 131 >= theEnemy.y + 90 && player.x + 76 >= theEnemy.x + 11) {
     //Reset player position if collis  
-    player.y = 383
+    player.y = 650
     lifetracker()
   }
 }
@@ -168,20 +167,20 @@ function colosionDetection(theEnemy) {
 //Resets the player if they reach the top of the screen back to the bottom
 //Stops player movement if the reach the bottom,left or right side of the screen
 function playerReset() {
-  //      console.log("Y Postistion",player.y);
-  //   console.log("X Posistion",player.x);
-  if (player.y < -5) {
-    player.y = 383;
+        console.log("Y Postistion",player.y);
+        console.log("X Posistion",player.x);
+  if (player.y < -1) {
+    player.y = 650;
     levelUp();
   }
-  if (player.y > 430) {
-    player.y = 430;
+  if (player.y > 650) {
+    player.y = 650;
   }
   if (player.x < -22.5) {
     player.x = -22.5
   }
-  if (player.x > 420) {
-    player.x = 420
+  if (player.x > 725) {
+    player.x = 725
   }
 }
 // This listens for key presses and sends the keys to your
