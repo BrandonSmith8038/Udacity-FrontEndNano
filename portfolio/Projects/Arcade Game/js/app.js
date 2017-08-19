@@ -5,7 +5,7 @@ levelDisplay.innerHTML = "Level " + level;
 livesAmount = 5
 lifeText = "&#9825&#9825&#9825&#9825&#9825";
 var lifeDisplay = document.getElementById("lives");
-lifeDisplay.innerHTML = lifeText;
+lifeDisplay.innerHTML = "<p>" + lifeText + "</p>";
 
 
 // Enemies our player must avoid
@@ -132,7 +132,7 @@ function levelUp() {
     allEnemies[i] = new Enemy(enemyStartX, enemyStartY, enemySpeed);
   }
 
-  if (level === 3) {
+  if (level === 10) {
     document.body.innerHTML = "WINNER"
   }
 }
@@ -148,11 +148,11 @@ function lifetracker() {
   } else if (livesAmount === 1) {
     lifeText = "&#9825";
   } else if (livesAmount < 1) {
-    document.body.innerHTML = "Loser"
+    document.body.innerHTML = "<p>Loser</p>"
 
   }
 
-  lifeDisplay.innerHTML = lifeText;
+  lifeDisplay.innerHTML = "<p>" + lifeText + "</p>";
 }
 
 function colosionDetection(theEnemy) {
