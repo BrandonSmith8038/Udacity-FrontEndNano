@@ -34,7 +34,7 @@ Enemy.prototype.update = function(dt) {
     this.x = -100;
   }
 
-  colosionDetection(this);
+  colisionDetectionEnemy(this);
 
 
 
@@ -75,17 +75,9 @@ Heart.prototype.render = function() {
 };
 
 
-
-//Creates random positioning for the heart
-var heartY = Math.random() * (300 - 50) + 50;
-var heartX = Math.random() * (500 - 20) + 20;
-//Creates a random number between 1 and 3 that determines if the heart if the heart will be shown
-var showHeart = Math.random() * (4 - 1) + 1;
-//Creates a new heart however the render function in engine.js will only if showHeart === 1
-var heart = new Heart(heartX, heartY)
-
-
-
+Heart.prototype.update = function(dt) { 
+  colisionDetectionHeart(this);
+}
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
@@ -107,6 +99,14 @@ for (var i = 0; i < enemyAmount; i++) {
   //Create the new player
   allEnemies[i] = new Enemy(enemyStartX, enemyStartY, enemySpeed);
 }
+
+//Creates random positioning for the heart
+var heartY = Math.random() * (300 - 50) + 50;
+var heartX = Math.random() * (500 - 20) + 20;
+//Creates a random number between 1 and 3 that determines if the heart if the heart will be shown
+var showHeart = Math.random() * (4 - 1) + 1;
+//Creates a new heart however the render function in engine.js will only if showHeart === 1, equating to a 1 in 3 chance. 
+var heart = new Heart(heartX, heartY)
 
 //Handles keypresses for the player
 Player.prototype.handleInput = function(key) {
@@ -162,7 +162,6 @@ function levelUp() {
 }
 
 function lifetracker() {
-  livesAmount = livesAmount - 1;
   if (livesAmount === 4) {
     lifeText = "&#9825&#9825&#9825&#9825";
   } else if (livesAmount === 3) {
@@ -179,12 +178,24 @@ function lifetracker() {
   lifeDisplay.innerHTML = "<p>" + lifeText + "</p>";
 }
 
-function colosionDetection(theEnemy) {
+function colisionDetectionEnemy(theEnemy) {
   if (player.y + 73 <= theEnemy.y + 135 && player.x + 25 <= theEnemy.x + 88 && player.y + 131 >= theEnemy.y + 90 && player.x + 76 >= theEnemy.x + 11) {
     //Reset player position if collis  
-    player.y = 650
-    lifetracker()
+    player.y = 650;
+    livesAmount = livesAmount - 1;
+    lifetracker();
   }
+}
+
+function colisionDetectionHeart(theHeart) {
+  if (player.y + 73 <= theHeart.y + 135 && player.x + 25 <= theHeart.x + 88 && player.y + 131 >= theHeart.y + 90 && player.x + 76 >= theHeart.x + 11) {
+    //Reset player position if collis  
+    livesAmount = livesAmount + 1;
+    heart.x = 800;
+    heart.y= 800;
+    lifetracker();
+  }
+    console.log("Lives: ", livesAmount);
 }
 
 //Checks if player has reached the top of the screen and resets to the bottom
@@ -192,8 +203,8 @@ function colosionDetection(theEnemy) {
 //Resets the player if they reach the top of the screen back to the bottom
 //Stops player movement if the reach the bottom,left or right side of the screen
 function playerReset() {
-  console.log("Y Postistion", player.y);
-  console.log("X Posistion", player.x);
+//   console.log("Y Postistion", player.y);
+//   console.log("X Posistion", player.x);
   if (player.y < -1) {
     player.y = 650;
     levelUp();
