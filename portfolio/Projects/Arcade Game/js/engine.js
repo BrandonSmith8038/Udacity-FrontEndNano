@@ -157,9 +157,10 @@ var Engine = (function(global) {
 
     player.render();
 
-    if (Math.floor(showHeart) === 1) {
       heart.render();
-    }
+
+
+    
   }
 
   /* This function does nothing but it could have been a good place to

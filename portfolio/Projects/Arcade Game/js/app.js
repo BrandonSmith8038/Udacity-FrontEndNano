@@ -71,7 +71,11 @@ var Heart = function(x, y) {
 }
 
 Heart.prototype.render = function() {
-  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  
+  if(Math.floor(showHeart) === 3){
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  }
+  
 };
 
 
@@ -83,7 +87,7 @@ Heart.prototype.update = function(dt) {
 // Place the player object in a variable called player
 var allEnemies = [];
 //Number of enemies to display-Will eventually depend on the level number
-var enemyAmount = 5 + level;
+var enemyAmount = 6 + level;
 //X-axis Starting Position of Enemey
 var enemyStartX = -200;
 
@@ -140,7 +144,7 @@ function levelUp() {
   level = level + 1;
   levelDisplay.innerHTML = "Level " + level;
 
-  enemyAmount = 4 + level;
+  enemyAmount = 6 + level;
   //X-axis Starting Position of Enemey
   enemyStartX = -200;
 
@@ -162,9 +166,11 @@ function levelUp() {
 }
 
 function lifetracker() {
-  if (livesAmount === 4) {
+  if (livesAmount === 5) {
+    lifeText = "&#9825&#9825&#9825&#9825&#9825";
+  } else if (livesAmount === 4) {
     lifeText = "&#9825&#9825&#9825&#9825";
-  } else if (livesAmount === 3) {
+  }else if (livesAmount === 3) {
     lifeText = "&#9825&#9825&#9825";
   } else if (livesAmount === 2) {
     lifeText = "&#9825&#9825";
