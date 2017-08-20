@@ -20,3 +20,59 @@ body {
   font-size: 30px;
   color: blue;
 }
+#winner,
+#loser{
+  display: flex;
+  align-items: center;
+  height: 800px;
+  justify-content: center;
+  background-color: #43A047;
+}
+
+#loser {
+  background-color: #F44336;
+}
+
+/* Text Flashing from https://codepen.io/MeghanFrisco/pen/pyPpRa?q=flash+text&limit=all&type=type-pens */
+#winner p,
+#loser p{
+  font-size: 120px;
+  font-family: "Baloo Bhaijaan", cursive;
+  text-transform: uppercase;
+  color: #66ccff;
+}
+#winner p{
+	-webkit-animation-name: wflashanim; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 1.5s; /* Chrome, Safari, Opera */
+    -webkit-animation-timing: ease-in-out;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+     animation-name: wflashanim;
+    animation-duration: 1.5s;
+    animation-timing: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+#loser p{
+  -webkit-animation-name: lflashanim; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 1.5s; /* Chrome, Safari, Opera */
+    -webkit-animation-timing: ease-in-out;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+     animation-name: lflashanim;
+    animation-duration: 1.5s;
+    animation-timing: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes wflashanim {
+    0% {	color: #fff;}   
+    100% {	color: #43A047;}
+  
+}
+@keyframes lflashanim {
+    0% {	color: #fff;}   
+    100% {	color: #F44336;}
+  
+}

@@ -169,8 +169,8 @@ function levelUp() {
     allEnemies[i] = new Enemy(enemyStartX, enemyStartY, enemySpeed);
   }
 
-  if (level === 11) {
-    document.body.innerHTML = "WINNER"
+  if (level === 2) {
+    document.body.innerHTML = "<div id='winner'><p>you win</p></div>"
   }
 }
 
@@ -186,7 +186,7 @@ function lifetracker() {
   } else if (livesAmount === 1) {
     lifeText = "&#9825";
   } else if (livesAmount < 1) {
-    document.body.innerHTML = "<p>Loser</p>"
+    document.body.innerHTML = "<div id='loser'><p>You Lose</p></div>"
 
   }
 
