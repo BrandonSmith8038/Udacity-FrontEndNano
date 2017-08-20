@@ -67,19 +67,20 @@ Player.prototype.render = function() {
 var Heart = function(x, y) {
   this.x = x;
   this.y = y;
+  this.heartAvailable = false;
   this.sprite = 'images/Heart.png';
 }
 
 Heart.prototype.render = function() {
-  
-  if(Math.floor(showHeart) === 3){
+
+  if (Math.floor(showHeart) === 3 && this.heartAvailable === true) {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
-  
+
 };
 
 
-Heart.prototype.update = function(dt) { 
+Heart.prototype.update = function(dt) {
   colisionDetectionHeart(this);
 }
 // Now instantiate your objects.
@@ -127,6 +128,8 @@ Player.prototype.handleInput = function(key) {
     player.y += player.speed - 20;
   }
   playerReset();
+  console.log("Is The Heart Avaiable: ", heart.heartAvailable);
+  console.log("Show Heart: ", Math.floor(showHeart))
 
 }
 
@@ -137,6 +140,11 @@ Player.prototype.update = function() {
 }
 
 
+//Decides when a heart is available
+function giveHeart() {
+  showHeart = Math.random() * (4 - 1) + 1;
+  heart.heartAvailable = true;
+}
 
 
 
@@ -147,6 +155,7 @@ function levelUp() {
   enemyAmount = 6 + level;
   //X-axis Starting Position of Enemey
   enemyStartX = -200;
+  giveHeart();
 
   //Creates a new enemy
 
@@ -170,7 +179,7 @@ function lifetracker() {
     lifeText = "&#9825&#9825&#9825&#9825&#9825";
   } else if (livesAmount === 4) {
     lifeText = "&#9825&#9825&#9825&#9825";
-  }else if (livesAmount === 3) {
+  } else if (livesAmount === 3) {
     lifeText = "&#9825&#9825&#9825";
   } else if (livesAmount === 2) {
     lifeText = "&#9825&#9825";
@@ -190,6 +199,7 @@ function colisionDetectionEnemy(theEnemy) {
     player.y = 650;
     livesAmount = livesAmount - 1;
     lifetracker();
+    giveHeart();
   }
 }
 
@@ -198,10 +208,9 @@ function colisionDetectionHeart(theHeart) {
     //Reset player position if collis  
     livesAmount = livesAmount + 1;
     heart.x = 800;
-    heart.y= 800;
+    heart.y = 800;
     lifetracker();
   }
-    console.log("Lives: ", livesAmount);
 }
 
 //Checks if player has reached the top of the screen and resets to the bottom
@@ -209,11 +218,12 @@ function colisionDetectionHeart(theHeart) {
 //Resets the player if they reach the top of the screen back to the bottom
 //Stops player movement if the reach the bottom,left or right side of the screen
 function playerReset() {
-//   console.log("Y Postistion", player.y);
-//   console.log("X Posistion", player.x);
+  //   console.log("Y Postistion", player.y);
+  //   console.log("X Posistion", player.x);
   if (player.y < -1) {
     player.y = 650;
     levelUp();
+    giveHeart();
   }
   if (player.y > 650) {
     player.y = 650;
