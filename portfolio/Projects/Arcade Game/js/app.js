@@ -29,9 +29,12 @@ Enemy.prototype.update = function(dt) {
   // all computers.
   this.x += dt * this.speed;
 
-  //If the empty gets to the end of the playable area, loop back to the begining.
+  //If the empty gets to the end of the playable area, loop back to the begining and jump to a new row
   if (this.x > 725) {
     this.x = -100;
+    this.y = Math.random() * (435 - 45) + 45;
+
+    console.log(allEnemies[1].y);
   }
 
   colisionDetectionEnemy(this);
@@ -56,8 +59,6 @@ var Player = function(x, y, speed) {
   this.speed = speed;
 
 }
-
-
 
 Player.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -127,8 +128,8 @@ Player.prototype.handleInput = function(key) {
     player.y += player.speed - 20;
   }
   playerReset();
-  console.log("Is The Heart Avaiable: ", heart.heartAvailable);
-  console.log("Show Heart: ", Math.floor(showHeart))
+  // console.log("Is The Heart Avaiable: ", heart.heartAvailable);
+  // console.log("Show Heart: ", Math.floor(showHeart))
 
 }
 
