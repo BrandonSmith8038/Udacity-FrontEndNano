@@ -63,7 +63,6 @@ Player.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-
 var Heart = function(x, y) {
   this.x = x;
   this.y = y;
@@ -157,9 +156,7 @@ function levelUp() {
   enemyStartX = -200;
   giveHeart();
 
-  //Creates a new enemy
-
-
+  //Creates new enemies for the new level
   for (var i = 0; i < enemyAmount; i++) {
     //Y-axis Starting position for enemey
     var enemyStartY = Math.random() * (435 - 45) + 45;
@@ -170,7 +167,8 @@ function levelUp() {
   }
 
   if (level === 2) {
-    document.body.innerHTML = "<div id='winner'><p>you win</p></div>"
+    document.body.innerHTML = "<div id='winner'><p>you win</p><button id='playAgain'>Play Again</button></div>"
+    playAgain();
   }
 }
 
@@ -186,7 +184,8 @@ function lifetracker() {
   } else if (livesAmount === 1) {
     lifeText = "&#9825";
   } else if (livesAmount < 1) {
-    document.body.innerHTML = "<div id='loser'><p>You Lose</p></div>"
+    document.body.innerHTML = "<div id='loser'><p>You Lose</p><button id='playAgain'>Play Again</button></div>"
+    playAgain();
 
   }
 
@@ -236,7 +235,14 @@ function playerReset() {
   }
 }
 
-
+function playAgain(){
+  
+var playAgainButton = document.getElementById("playAgain");
+  playAgainButton.addEventListener('click', function(){
+      // Learned From https://www.w3schools.com/jsref/met_loc_reload.asp
+      location.reload();
+  });
+}
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.

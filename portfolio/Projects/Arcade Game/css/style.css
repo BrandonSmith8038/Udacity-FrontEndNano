@@ -23,8 +23,9 @@ body {
 #winner,
 #loser{
   display: flex;
+  flex-direction: column;
   align-items: center;
-  height: 800px;
+  height: 100vh;
   justify-content: center;
   background-color: #43A047;
 }
@@ -75,4 +76,40 @@ body {
     0% {	color: #fff;}   
     100% {	color: #F44336;}
   
+}
+
+button#playAgain {
+    width: 50%;
+    padding: 8px;
+    font-size: 39px;
+    border: 3px solid white;
+    border-radius: 10px;
+    text-transform: uppercase;
+    color: white;
+    cursor: pointer;
+    font-family: "Baloo Bhaijaan", cursive;
+    transition: 0.6s;
+}
+
+button#playAgain:hover{
+  -webkit-box-shadow: 10px 10px 30px 5px rgba(0,0,0,0.33);
+  -moz-box-shadow: 10px 10px 30px 5px rgba(0,0,0,0.33);
+  box-shadow: 10px 10px 30px 5px rgba(0,0,0,0.33);
+  background-color: white;
+}
+
+#loser button#playAgain {
+    background-color: #F44336;
+}
+#loser button#playAgain:hover {
+    color: #F44336;
+    background-color: white;
+}
+
+#winner button#playAgain {
+    background-color: #43A047;
+}
+#winner button#playAgain:hover {
+    color: #43A047;
+    background-color: white;
 }
