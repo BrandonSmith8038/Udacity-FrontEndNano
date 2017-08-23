@@ -1,13 +1,11 @@
 body {
     text-align: center;
-/*     margin: 0; 
-    height: 100%; 
-    overflow: hidden */
 }
 
 #lives {
-  font-size: 60px;
   color: red;
+  float: right;
+  font-size: 60px;
   margin: 0;
 }
 
@@ -17,98 +15,103 @@ body {
 }
 
 #level {
-  font-size: 30px;
   color: blue;
+  float: left;
+  font-size: 30px;
 }
+
 #winner,
 #loser{
+  align-items: center;
+  background-color: #43a047;
   display: flex;
   flex-direction: column;
-  align-items: center;
   height: 100vh;
   justify-content: center;
-  background-color: #43A047;
 }
 
 #loser {
-  background-color: #F44336;
+  background-color: #f44336;
 }
 
 /* Text Flashing from https://codepen.io/MeghanFrisco/pen/pyPpRa?q=flash+text&limit=all&type=type-pens */
 #winner p,
 #loser p{
-  font-size: 120px;
-  font-family: "Baloo Bhaijaan", cursive;
-  text-transform: uppercase;
   color: #66ccff;
+  font-family: "Baloo Bhaijaan", cursive;
+  font-size: 120px;
+  text-transform: uppercase;
 }
+
 #winner p{
-	-webkit-animation-name: wflashanim; /* Chrome, Safari, Opera */
-    -webkit-animation-duration: 1.5s; /* Chrome, Safari, Opera */
-    -webkit-animation-timing: ease-in-out;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-direction: alternate;
+  -webkit-animation-name: wflashanim; /* Chrome, Safari, Opera */
      animation-name: wflashanim;
-    animation-duration: 1.5s;
-    animation-timing: ease-in-out;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-#loser p{
-  -webkit-animation-name: lflashanim; /* Chrome, Safari, Opera */
-    -webkit-animation-duration: 1.5s; /* Chrome, Safari, Opera */
-    -webkit-animation-timing: ease-in-out;
-    -webkit-animation-iteration-count: infinite;
     -webkit-animation-direction: alternate;
-     animation-name: lflashanim;
-    animation-duration: 1.5s;
-    animation-timing: ease-in-out;
-    animation-iteration-count: infinite;
+    -webkit-animation-duration: 1.5s; /* Chrome, Safari, Opera */
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing: ease-in-out;
     animation-direction: alternate;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing: ease-in-out;
+}
+
+#loser p{
+     animation-name: lflashanim;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-duration: 1.5s; /* Chrome, Safari, Opera */
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing: ease-in-out;
+    animation-direction: alternate;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing: ease-in-out;
+  -webkit-animation-name: lflashanim; /* Chrome, Safari, Opera */
 }
 
 @keyframes wflashanim {
     0% {	color: #fff;}   
-    100% {	color: #43A047;}
-  
+    100% {	color: #43a047;}
 }
+
 @keyframes lflashanim {
     0% {	color: #fff;}   
-    100% {	color: #F44336;}
-  
+    100% {	color: #f44336;}
 }
 
 button#playAgain {
-    width: 50%;
-    padding: 8px;
-    font-size: 39px;
-    border: 3px solid white;
     border-radius: 10px;
-    text-transform: uppercase;
+    border: 3px solid white;
     color: white;
     cursor: pointer;
     font-family: "Baloo Bhaijaan", cursive;
+    font-size: 39px;
+    padding: 8px;
+    text-transform: uppercase;
     transition: 0.6s;
+    width: 50%;
 }
 
 button#playAgain:hover{
-  -webkit-box-shadow: 10px 10px 30px 5px rgba(0,0,0,0.33);
   -moz-box-shadow: 10px 10px 30px 5px rgba(0,0,0,0.33);
-  box-shadow: 10px 10px 30px 5px rgba(0,0,0,0.33);
+  -webkit-box-shadow: 10px 10px 30px 5px rgba(0,0,0,0.33);
   background-color: white;
+  box-shadow: 10px 10px 30px 5px rgba(0,0,0,0.33);
 }
 
 #loser button#playAgain {
-    background-color: #F44336;
+    background-color: #f44336;
 }
+
 #loser button#playAgain:hover {
-    color: #F44336;
     background-color: white;
+    color: #f44336;
 }
 
 #winner button#playAgain {
-    background-color: #43A047;
+    background-color: #43a047;
 }
+
 #winner button#playAgain:hover {
     color: #43A047;
     background-color: white;
